@@ -1,0 +1,198 @@
+.giris{
+    text-align: center;
+    text-transform: capitalize;
+    color: #000d90;
+    
+}
+
+.genelnav{
+    color: #000d90;
+    font-size: 18px;
+}
+
+.butongiris{
+    text-align: center;
+    font-weight: bold;
+}
+
+
+.container{
+    display: flex;            
+justify-content: center;            
+align-items: center;
+}
+
+input[type="radio"]{
+    display: none;
+}
+
+.cinsiyet label{
+    position: relative;
+    border: 2px solid #dcdcdf;
+    border-radius: 5px;
+    padding: 5px;
+    margin: 5px;
+    font-size: 18px;
+    width: 110px;
+    text-align: center;
+}
+
+input[type="radio"]:checked+label{
+    border: 2px solid #000d90;
+    color: #000d90;
+}
+
+
+.logo{
+    margin-left: 150px;
+    
+}
+
+.arama input{
+    margin-right:50px;
+    margin-left: 150px;
+    height: 40px;
+    width: 500px;
+    border-radius: 5px;
+    
+}
+
+.ikon{
+    margin-left: 20px;
+    font-size: 20px;
+    color: #000d90;
+}
+
+.açılırmenü buttonn{
+    color:white;
+    text-transform: capitalize;
+    float: left;
+}
+
+.kıyafetdropdown{
+    background-color: #000d90;
+    
+}
+
+.dropdownmenü{
+    margin-left: 230px;
+    text-transform: capitalize;
+    color: white;
+    text-align: center;
+}
+
+
+.kıyafetdropdown button{
+    background-color: #000d90;
+}
+.kıyafetdropdown button:hover{
+    background-color: white;
+    transition: 0.5s;
+    color: #000d90;
+}
+
+.dropdownmenü:hover{
+    color: white;
+}
+
+footer h6{
+    color: #000d90;
+}
+footer a{
+    text-decoration: none;
+    color: #000d90;
+}
+
+footer{
+    border-top: 1px solid #000d90;
+}
+
+.magazasecim input{
+    font-size: 18px;
+    margin: 25px;
+}
+
+.magazakayıt input{
+    size: 15px;
+}
+
+body{
+    text-align: center;
+}
+
+.cizgi{
+    border-left: 1px solid #000d90;
+    height: 100x;
+    left: 50%;
+    top: 0;
+    margin-left: -3px;
+    padding: 20px;
+    padding-left: 100px;
+}
+
+.sagkayit{
+    margin-top:68px;
+    margin-right: 100px;
+}
+
+
+.menu {
+    background: #000d90;
+    color: #fff;
+    cursor: pointer;
+    height: 50px;
+    line-height: 50px;
+    position: relative;
+    width: 100px;
+    text-align: center;
+    text-decoration: none;
+    z-index: 1;
+    transform: perspective(1000px);
+    margin-left:150px ;
+    margin-right: 150px;
+  }
+  
+  .drop {
+    background-color: #000d90;
+    list-style-type: none;
+    margin: 20px;
+    padding:5px;
+    position: absolute;
+    
+    opacity: 0;
+    text-align: center;
+    top: 0;
+    visibility: hidden;
+    z-index: -99999;
+  }
+  
+  .drop li:first-child {
+    cursor: default;
+  }
+  
+  .drop a {
+    color: #fff;
+    display: inline-block;
+    width: 100%;
+    text-decoration: none;
+    transition: all 1s;
+  }
+  
+  .drop a:hover {
+    background: #000b87;
+    color: #fff;
+  }
+  
+  .menu:hover .drop {
+    background: #000d90;
+    opacity: 1;
+    visibility: visible;
+    top: 30px;
+    width:150px;
+    -webkit-transition: all 0.6s, background, 0.6s 0.6s linear;
+    transition: all 0.6s, background 0.6s 0.6s linear;
+}
+
+    .kadin{
+        font-weight: bold;
+    }
