@@ -13,11 +13,11 @@
 .butongiris{
     text-align: center;
     font-weight: bold;
+    font-size: 15px;
 }
 
 
-.container{
-    display: flex;            
+.container{  
 justify-content: center;            
 align-items: center;
 }
@@ -42,12 +42,6 @@ input[type="radio"]:checked+label{
     color: #000d90;
 }
 
-
-.logo{
-    margin-left: 150px;
-    
-}
-
 .arama input{
     margin-right:50px;
     margin-left: 150px;
@@ -57,10 +51,10 @@ input[type="radio"]:checked+label{
     
 }
 
-.ikon{
-    margin-left: 20px;
-    font-size: 20px;
-    color: #000d90;
+li a{
+  text-decoration: none;
+  text-align: center ;
+  color: #000d90;
 }
 
 .açılırmenü buttonn{
@@ -71,7 +65,7 @@ input[type="radio"]:checked+label{
 
 .kıyafetdropdown{
     background-color: #000d90;
-    
+    margin-top: -20px;
 }
 
 .dropdownmenü{
@@ -87,7 +81,7 @@ input[type="radio"]:checked+label{
 }
 .kıyafetdropdown button:hover{
     background-color: white;
-    transition: 0.5s;
+    transition: 0.1s;
     color: #000d90;
 }
 
@@ -114,6 +108,10 @@ footer{
 
 .magazakayıt input{
     size: 15px;
+    width: 500px;
+    display: block;
+    margin: auto;
+    text-align: center;
 }
 
 body{
@@ -130,9 +128,17 @@ body{
     padding-left: 100px;
 }
 
+.cizgi input{
+    text-align: center;
+}
+
 .sagkayit{
     margin-top:68px;
     margin-right: 100px;
+}
+
+.sagkayit input{
+    text-align: center;
 }
 
 
@@ -189,10 +195,137 @@ body{
     visibility: visible;
     top: 30px;
     width:150px;
-    -webkit-transition: all 0.6s, background, 0.6s 0.6s linear;
-    transition: all 0.6s, background 0.6s 0.6s linear;
+    -webkit-transition: all 0.3s, background, 0.3s 0.3s linear;
+    transition: all 0.6s, background 0.3s 0.3s linear;
 }
 
-    .kadin{
-        font-weight: bold;
+    .menuler a{
+        border-bottom: 2 px solid ;
+        padding-bottom: 0;
+        color: #000d90;
+        margin-left: 20px;
     }
+
+    .menuler a:hover{
+      text-decoration: none;
+      color: #000b87;
+      
+    }
+
+    .kiyafetslider{
+        width:300px; 
+        padding: 20px;
+        float: left;
+        margin-left: 70px;
+    }
+    .kiyafetslider:hover{
+        opacity: 0.9;
+        transition: 0.5s;
+        width: 20%;
+    }
+
+    .kiyafetslider p{
+        padding-top:250px;
+        font-weight: bold;
+        font-size: 40px;
+        color: black;
+    }
+
+    .kiyafetslider p:hover{
+        font-size: 42px ;
+        transition: 0.5s;
+    }
+
+    
+
+    .product-item{
+      border: 1px solid rgb(219, 219, 219);
+  }
+  .product-img{
+      position: relative;
+      overflow: hidden;
+  }
+  
+  .product-img:hover .btns{
+      bottom: 0;
+  }
+
+  .heart-icon{
+      position: absolute;
+      top: 16px;
+      right: 85px;
+      font-size: 20px;
+      color: red;
+  }
+  
+  .btns button{
+    color: black;
+    border: 1px solid grey;
+    left: 0;
+    font-size: 15px;
+    font-weight: 300;
+  }
+
+  .product-name{
+      transition: 0.8s;
+      margin-left: 50px;
+  }
+  .product-name:hover{
+      color: #000d90!important;
+  }
+  .product-price{
+      color: red;
+      margin-left: 50px;
+  }
+  .rating{
+      font-size: 13px;
+      margin-left:50px;
+  }
+  .product-item{
+      width: 300px;
+  }
+
+  .indirimsiz{
+    text-decoration: line-through;
+    color: black;
+    font-size: 13px;
+  }
+
+  .sepetsag button{
+    background-color: #000b90;
+    color: white;
+    margin-left: 170px;
+    text-transform: capitalize;
+    width: 200px;
+  }
+
+  .sepetsag button:hover{
+    color: white;
+    background-color: #000971;
+  }
+
+  .sepetcard{
+    border: 1px solid grey;
+    border-radius: 10px;
+    width: 300px;
+    margin: auto;
+  }
+
+  .kod{
+    margin-left: 120px;
+  }
+
+.kod input{
+    border: 1px solid grey;
+    border-radius: 10px;
+    height: 35px;
+    margin: auto;
+    text-align: center;
+}
+
+.kod button{
+    width: 75px;
+    background-color: #000b90;
+    margin: auto;
+
+}
