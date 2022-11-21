@@ -13,7 +13,7 @@
 .butongiris{
     text-align: center;
     font-weight: bold;
-    font-size: 15px;
+    font-size: 20px;
 }
 
 
@@ -120,12 +120,13 @@ body{
 
 .cizgi{
     border-left: 1px solid #000d90;
-    height: 100x;
+    height: 850px;
     left: 50%;
     top: 0;
     margin-left: -3px;
     padding: 20px;
     padding-left: 100px;
+    
 }
 
 .cizgi input{
@@ -291,6 +292,7 @@ body{
     font-size: 13px;
   }
 
+
   .sepetsag button{
     background-color: #000b90;
     color: white;
@@ -329,3 +331,40 @@ body{
     margin: auto;
 
 }
+
+.sepetsol ul{
+    margin-left: 130px;
+}
+
+.metinkim{
+    font-size: 18px;
+    text-align: left;
+    font-weight: 200;
+}
+
+.hesapsol h3{
+    font-weight: bold;
+}
+
+.hesapsol ul{
+cursor: pointer;
+}
+
+.hesapsol a{
+    text-decoration: none;
+}
+
+.hesapsol .solliste a{
+    color: #000971;
+}
+
+.hesapsol .solliste a:hover{
+    color: #000971;
+}
+
+.hesapsag h2{
+    margin-left: 300px;
+    text-decoration: underline;
+    font-weight: bold;
+}
+

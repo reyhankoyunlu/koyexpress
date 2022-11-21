@@ -1,48 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- Font Awesome -->
-    <link
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
-          rel="stylesheet"
-        />
-        <script
-          src="https://kit.fontawesome.com/5f120640c7.js"
-          crossorigin="anonymous"
-        ></script>
-    
-    
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet"/>
-    
-    
+<?php
+include('../header.php');
+?>
+
     <!-- MDB -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.11.0/mdb.min.css" rel="stylesheet"/>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.11.0/mdb.min.js"></script>
     
     
-    
     <!-- CSS -->
     <link rel="stylesheet" href="../style.css" />
     
-    <!-- ANIMATE CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-    
     <!-- ICONFINDER -->
-    <link rel="shortcut icon" href="../Koyexpress Resmi Logo.ico">
+    <link rel="shortcut icon" href="../img/Koyexpress Resmi Logo.ico">
 
+    <!-- bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
-    
-        <title>KoyExpress</title>
     </head>
 <body>
 
@@ -52,7 +32,7 @@
     <div class="container-fluid">
   
       <!-- Navbar brand -->
-      <a class="navbar-brand logo" href="#"><img src="../Koyexpress Resmi Logo.png" alt="" style="width: 80px; margin-left: 120px;"></a>
+      <a class="navbar-brand logo" href="../index.php"><img src="../img/Koyexpress Resmi Logo.png" alt="" style="width: 80px; margin-left: 120px;"></a>
   
       <!-- Toggle button -->
       <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -65,10 +45,10 @@
   
           <!-- Link -->
           <li class="nav-item menuler"  >
-            <a class="nav-link"  href="../index.html">Kadın</a>
+            <a class="nav-link"  href="../index.php">Kadın</a>
           </li>
-          <li class="nav-item menuler" style="">
-            <a class="nav-link " href="../erkek/index.html" >Erkek</a>
+          <li class="nav-item menuler" >
+            <a class="nav-link " href="../erkek/" >Erkek</a>
           </li>
         </ul>
   
@@ -108,7 +88,7 @@
             </a>
           </li>
           <li class="nav-item me-3 me-lg-0" >
-            <a class="nav-link" href="../giris/index.html" style="color:#000d90 ;" >
+            <a class="nav-link" href="../profilim/kullanıcıbilgilerim/" style="color:#000d90 ;" >
               <i class="fas fa-user"></i>
               <p style="font-size:13px ;">Profilim</p>
               
@@ -129,7 +109,7 @@
       <div class="item  ">
         <div class="col-xs-4 ">
           <div class="product-img">
-            <img src="../sliders/erkekslider1.png" class="card-img-top img-fluid d-block mx-auto" alt="..." style="width: 250px;" >
+            <img src="../img/sliders/erkekslider1.png" class="card-img-top img-fluid d-block mx-auto" alt="..." style="width: 250px;" >
 
             <span class = "heart-icon">
               <i class="fa-solid fa-xmark"></i>
@@ -191,7 +171,7 @@
       <div class="item ">
         <div class="col-xs-4">
           <div class="card-img ">
-            <img src="../sliders/slider11.jpg" class="card-img-top img-fluid d-block mx-auto" alt="..." style="width: 250px;" >
+            <img src="../img/sliders/slider11.jpg" class="card-img-top img-fluid d-block mx-auto" alt="..." style="width: 250px;" >
 
             <span class = "heart-icon">
               <i class="fa-solid fa-xmark"></i>
@@ -248,7 +228,7 @@
       <div class="item ">
         <div class="col-xs-4">
           <div class="card-img ">
-            <img src="../sliders/slider17.jpg" class="card-img-top img-fluid d-block mx-auto" alt="..." style="width: 250px;" >
+            <img src="../img/sliders/slider17.jpg" class="card-img-top img-fluid d-block mx-auto" alt="..." style="width: 250px;" >
 
             <span class = "heart-icon">
               <i class="fa-solid fa-xmark"></i>
@@ -305,122 +285,7 @@
       <div class="item ">
         <div class="col-xs-4">
           <div class="card-img ">
-            <img src="../sliders/erkekslider13.jpg" class="card-img-top img-fluid d-block mx-auto" alt="..." style="width: 250px;" >
-
-            <span class = "heart-icon">
-              <i class="fa-solid fa-xmark"></i>
-            </span>
-
-            <div class = "row btns w- mx-auto text-center">
-
-              <div class=" dropdown">
-              <div class="btn-group">
-                <button class="btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  add to card
-                </button>
-                
-              </div>
-              
-              <div class="btn-group ">
-                <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  size
-                </button>
-                <ul class="dropdown-menu">
-                  <li><button class="dropdown-item" type="button">s</button></li>
-                  <li><button class="dropdown-item" type="button">m</button></li>
-                  <li><button class="dropdown-item" type="button">l</button></li>
-                </ul>
-              </div>
-          </div>
-          
-        </div>
-
-            <div class = "product-info p-3" >
-              <a href = "#" class = "d-block text-dark text-decoration-none py-2 product-name">Trendyol Collection Sweater - Gray - Oversize</a>
-              <span class = "product-price indirimsiz">$ 100.50</span>
-              <span class = "product-price">$ 100.50</span>
-              <div class = "rating d-flex mt-1">
-                  <span>
-                      <i class = "fa fa-star"></i>
-                  </span>
-                  <span>
-                      <i class = "fa fa-star"></i>
-                  </span>
-                  <span>
-                      <i class = "far fa-star"></i>
-                  </span>
-                  <span>
-                      <i class = "far fa-star"></i>
-                  </span>
-                  <span>
-                      <i class = "far fa-star"></i>
-                  </span>
-              </div>
-          </div>
-          </div></div>
-      </div>
-
-      <div class="item ">
-        <div class="col-xs-4">
-          <div class="card-img ">
-            <img src="../sliders/slider18.jpg" class="card-img-top img-fluid d-block mx-auto" alt="..." style="width: 250px;" >
-
-            <span class = "heart-icon">
-              <i class="fa-solid fa-xmark"></i>
-            </span>
-
-            <div class = "row btns w- mx-auto text-center">
-
-              <div class=" dropdown">
-              <div class="btn-group">
-                <button class="btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  add to card
-                </button>
-                
-              </div>
-              
-              <div class="btn-group ">
-                <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  size
-                </button>
-                <ul class="dropdown-menu">
-                  <li><button class="dropdown-item" type="button">s</button></li>
-                  <li><button class="dropdown-item" type="button">m</button></li>
-                  <li><button class="dropdown-item" type="button">l</button></li>
-                </ul>
-              </div>
-          </div>
-          
-        </div>
-
-            <div class = "product-info p-3" >
-              <a href = "#" class = "d-block text-dark text-decoration-none py-2 product-name">Trendyol Collection Sweater - Gray - Oversize</a>
-              <span class = "product-price">$ 100.50</span>
-              <div class = "rating d-flex mt-1">
-                  <span>
-                      <i class = "fa fa-star"></i>
-                  </span>
-                  <span>
-                      <i class = "fa fa-star"></i>
-                  </span>
-                  <span>
-                      <i class = "far fa-star"></i>
-                  </span>
-                  <span>
-                      <i class = "far fa-star"></i>
-                  </span>
-                  <span>
-                      <i class = "far fa-star"></i>
-                  </span>
-              </div>
-          </div>
-          </div></div>
-      </div>
-
-      <div class="item ">
-        <div class="col-xs-4">
-          <div class="card-img ">
-            <img src="../sliders/erkekslider8.jpg" class="card-img-top img-fluid d-block mx-auto" alt="..." style="width: 250px;" >
+            <img src="../img/sliders/erkekslider13.jpg" class="card-img-top img-fluid d-block mx-auto" alt="..." style="width: 250px;" >
 
             <span class = "heart-icon">
               <i class="fa-solid fa-xmark"></i>
@@ -478,7 +343,122 @@
       <div class="item ">
         <div class="col-xs-4">
           <div class="card-img ">
-            <img src="../sliders/erkekslider2.png" class="card-img-top img-fluid d-block mx-auto" alt="..." style="width: 250px;" >
+            <img src="../img/sliders/slider18.jpg" class="card-img-top img-fluid d-block mx-auto" alt="..." style="width: 250px;" >
+
+            <span class = "heart-icon">
+              <i class="fa-solid fa-xmark"></i>
+            </span>
+
+            <div class = "row btns w- mx-auto text-center">
+
+              <div class=" dropdown">
+              <div class="btn-group">
+                <button class="btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  add to card
+                </button>
+                
+              </div>
+              
+              <div class="btn-group ">
+                <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  size
+                </button>
+                <ul class="dropdown-menu">
+                  <li><button class="dropdown-item" type="button">s</button></li>
+                  <li><button class="dropdown-item" type="button">m</button></li>
+                  <li><button class="dropdown-item" type="button">l</button></li>
+                </ul>
+              </div>
+          </div>
+          
+        </div>
+
+            <div class = "product-info p-3" >
+              <a href = "#" class = "d-block text-dark text-decoration-none py-2 product-name">Trendyol Collection Sweater - Gray - Oversize</a>
+              <span class = "product-price">$ 100.50</span>
+              <div class = "rating d-flex mt-1">
+                  <span>
+                      <i class = "fa fa-star"></i>
+                  </span>
+                  <span>
+                      <i class = "fa fa-star"></i>
+                  </span>
+                  <span>
+                      <i class = "far fa-star"></i>
+                  </span>
+                  <span>
+                      <i class = "far fa-star"></i>
+                  </span>
+                  <span>
+                      <i class = "far fa-star"></i>
+                  </span>
+              </div>
+          </div>
+          </div></div>
+      </div>
+
+      <div class="item ">
+        <div class="col-xs-4">
+          <div class="card-img ">
+            <img src="../img/sliders/erkekslider8.jpg" class="card-img-top img-fluid d-block mx-auto" alt="..." style="width: 250px;" >
+
+            <span class = "heart-icon">
+              <i class="fa-solid fa-xmark"></i>
+            </span>
+
+            <div class = "row btns w- mx-auto text-center">
+
+              <div class=" dropdown">
+              <div class="btn-group">
+                <button class="btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  add to card
+                </button>
+                
+              </div>
+              
+              <div class="btn-group ">
+                <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  size
+                </button>
+                <ul class="dropdown-menu">
+                  <li><button class="dropdown-item" type="button">s</button></li>
+                  <li><button class="dropdown-item" type="button">m</button></li>
+                  <li><button class="dropdown-item" type="button">l</button></li>
+                </ul>
+              </div>
+          </div>
+          
+        </div>
+
+            <div class = "product-info p-3" >
+              <a href = "#" class = "d-block text-dark text-decoration-none py-2 product-name">Trendyol Collection Sweater - Gray - Oversize</a>
+              <span class = "product-price indirimsiz">$ 100.50</span>
+              <span class = "product-price">$ 100.50</span>
+              <div class = "rating d-flex mt-1">
+                  <span>
+                      <i class = "fa fa-star"></i>
+                  </span>
+                  <span>
+                      <i class = "fa fa-star"></i>
+                  </span>
+                  <span>
+                      <i class = "far fa-star"></i>
+                  </span>
+                  <span>
+                      <i class = "far fa-star"></i>
+                  </span>
+                  <span>
+                      <i class = "far fa-star"></i>
+                  </span>
+              </div>
+          </div>
+          </div></div>
+      </div>
+
+      <div class="item ">
+        <div class="col-xs-4">
+          <div class="card-img ">
+            <img src="../img/sliders/erkekslider2.png" class="card-img-top img-fluid d-block mx-auto" alt="..." style="width: 250px;" >
 
             <span class = "heart-icon">
               <i class="fa-solid fa-xmark"></i>
@@ -536,7 +516,7 @@
       <div class="item ">
         <div class="col-xs-4">
           <div class="card-img ">
-            <img src="../sliders/slider15.jpg" class="card-img-top img-fluid d-block mx-auto" alt="..." style="width: 250px;" >
+            <img src="../img/sliders/slider15.jpg" class="card-img-top img-fluid d-block mx-auto" alt="..." style="width: 250px;" >
 
             <span class = "heart-icon">
               <i class="fa-solid fa-xmark"></i>
@@ -593,7 +573,7 @@
       <div class="item ">
         <div class="col-xs-4">
           <div class="card-img ">
-            <img src="../sliders/slider3.jpg" class="card-img-top img-fluid d-block mx-auto" alt="..." style="width: 250px;" >
+            <img src="../img/sliders/slider3.jpg" class="card-img-top img-fluid d-block mx-auto" alt="..." style="width: 250px;" >
 
             <span class = "heart-icon">
               <i class="fa-solid fa-xmark"></i>
@@ -650,7 +630,7 @@
       <div class="item ">
         <div class="col-xs-4">
           <div class="card-img ">
-            <img src="../sliders/slider8.jpg" class="card-img-top img-fluid d-block mx-auto" alt="..." style="width: 250px;" >
+            <img src="../img/sliders/slider8.jpg" class="card-img-top img-fluid d-block mx-auto" alt="..." style="width: 250px;" >
 
             <span class = "heart-icon">
               <i class="fa-solid fa-xmark"></i>
@@ -710,87 +690,9 @@
 
 </div>
 
-
-  <!-- Footer -->
-  <footer class="text-center text-lg-start bg-white text-muted">
-
-
-    <!-- Section: Links  -->
-    <section class="">
-      <div class="container text-center text-md-start mt-5">
-        <!-- Grid row -->
-        <div class="row mt-3">
-          <!-- Grid column -->
-          <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
-            <!-- Content -->
-            <a class="navbar-brand logo" href="../index.html"><img src="../Koyexpress Resmi Logo.png" alt="" style="width: 150px;"></a>            <br><br><br>
-            <h4 class="text-uppercase fw-bold mb-4 " style="color:#000d90 ; ">
-              KoyExpress
-            </h4>
-            
-          </div>
-          <!-- Grid column -->
-  
-          <!-- Grid column -->
-          <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
-            <!-- Links -->
-            <h6 class="text-uppercase fw-bold mb-4">
-              hakkımızda
-            </h6>
-            <p>
-              <a href="#!" class="text-black">Biz Kimiz</a>
-            </p>
-            <p>
-              <a href="#!" class="text-black">Neler Yapıyoruz</a>
-            </p>
-            <p>
-              <a href="#!" class="text-black">Misyon&Vizyon</a>
-            </p>
-            <p>
-              <a href="#!" class="text-black">Bize Ulaşın</a>
-            </p>
-          </div>
-          <!-- Grid column -->
-  
-          <!-- Grid column -->
-          <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
-            <!-- Links -->
-            <h6 class="text-uppercase fw-bold mb-4">
-              Sosyal Medya Hesaplarımız
-            </h6>
-            <p class="sosyal">
-              <a href="#" class="ms-5 ">
-                <i class="fab fa-facebook-f"></i>
-              </a>
-            </p>
-            <p>
-              <a href="#" class="ms-5 ">
-                <i class="fab fa-twitter"></i>
-              </a>
-            </p>
-            <p>
-              <a href="#" class="ms-5 ">
-                <i class="fab fa-instagram"></i>
-              </a>
-            </p>
-          </div>
-          <!-- Grid column -->
-  
-          <!-- Grid column -->
-          <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
-            <!-- Links -->
-            <h6 class="text-uppercase fw-bold mb-4">mağaza</h6>
-            <p class="text-black">Eğer satış yapmak istiyorsanız mağazanız için <a href="../magazagiris" style="font-style:italic; font-weight: bold;"> "buraya" </a> tıklayın</p>
-          </div>
-          <!-- Grid column -->
-        </div>
-        <!-- Grid row -->
-      </div>
-    </section>
-    <!-- Section: Links  -->
-  
-  </footer>
-  
+<?php
+include('../footerklasor.php');
+?>
 
   <script src="../script.js"></script> 
 </body>

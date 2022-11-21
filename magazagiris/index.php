@@ -1,23 +1,15 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- Font Awesome -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"/>
-    <script src="https://kit.fontawesome.com/5f120640c7.js" crossorigin="anonymous"></script>
-    
-    
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet"/>
-    
-    
+    <?php
+    include('../header.php');
+    ?>
     <!-- MDB -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.11.0/mdb.min.css" rel="stylesheet"/>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.11.0/mdb.min.js"></script>
-    
     
     <!-- BOOTSTRAP -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous"/>
@@ -26,15 +18,9 @@
     <!-- CSS -->
     <link rel="stylesheet" href="../style.css" />
     
-    <!-- ANIMATE CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-    
     <!-- ICONFINDER -->
-    <link rel="shortcut icon" href="../Koyexpress Resmi Logo.ico">
+    <link rel="shortcut icon" href="../img/Koyexpress Resmi Logo.ico">
 
-
-    
-        <title>Koy Express</title>
     </head>
 <body>
 
@@ -45,7 +31,7 @@
       <div class="container-fluid">
     
         <!-- Navbar brand -->
-        <a class="navbar-brand logo" href="../magazagiris/"><img src="../Koyexpress Resmi Logo.png" alt="" style="width: 80px; margin-left: 120px;"></a>
+        <a class="navbar-brand logo" href="../magazagiris/"><img src="../img/Koyexpress Resmi Logo.png" alt="" style="width: 80px; margin-left: 120px;"></a>
     
         <!-- Toggle button -->
         <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -58,10 +44,10 @@
     
             <!-- Link -->
             <li class="nav-item menuler"  >
-              <a class="nav-link" href="../index.html">Kadın</a>
+              <a class="nav-link" href="../index.php">Kadın</a>
             </li>
             <li class="nav-item menuler" >
-              <a class="nav-link " href="../erkek/index.html" >Erkek</a>
+              <a class="nav-link " href="../erkek/" >Erkek</a>
             </li>
           </ul>
     
@@ -88,7 +74,7 @@
           <ul class="navbar-nav d-flex flex-row menuler ">
             <!-- Icons -->
             <li class="nav-item me-3 me-lg-0">
-              <a class="nav-link" href="../favoriler/index.html" >
+              <a class="nav-link" href="../favoriler/" >
                 <i class="fa-solid fa-heart"></i>
                 <p style="font-size:13px ;">Favoriler</p>
               </a>
@@ -180,87 +166,16 @@
     </form>
 
 
-      <!-- Footer -->
-<footer class="text-center text-lg-start bg-white text-muted">
+    <?php
     
-  
-    <!-- Section: Links  -->
-    <section class="">
-      <div class="container text-center text-md-start mt-5">
-        <!-- Grid row -->
-        <div class="row mt-3">
-          <!-- Grid column -->
-          <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
-            <!-- Content -->
-            <a class="navbar-brand logo" href="../magazagiris/"><img src="../Koyexpress Resmi Logo.png" alt="" style="width: 150px; "></a>
-          <br><br><br>
-            <h4 class="text-uppercase fw-bold mb-4 " style="color:#000d90 ; ">
-              KoyExpress
-            </h4>
-            
-          </div>
-          <!-- Grid column -->
-  
-          <!-- Grid column -->
-          <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
-            <!-- Links -->
-            <h6 class="text-uppercase fw-bold mb-4">
-              hakkımızda
-            </h6>
-            <p>
-              <a href="#!" class="text-black">Biz Kimiz</a>
-            </p>
-            <p>
-              <a href="#!" class="text-black">Neler Yapıyoruz</a>
-            </p>
-            <p>
-              <a href="#!" class="text-black">Misyon&Vizyon</a>
-            </p>
-            <p>
-              <a href="#!" class="text-black">Bize Ulaşın</a>
-            </p>
-          </div>
-          <!-- Grid column -->
-  
-          <!-- Grid column -->
-          <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
-            <!-- Links -->
-            <h6 class="text-uppercase fw-bold mb-4">
-              Sosyal Medya Hesaplarımız
-            </h6>
-            <p class="sosyal">
-              <a href="#" class="ms-5 ">
-                <i class="fab fa-facebook-f"></i>
-              </a>
-            </p>
-            <p>
-              <a href="#" class="ms-5 ">
-                <i class="fab fa-twitter"></i>
-              </a>
-            </p>
-            <p>
-              <a href="#" class="ms-5 ">
-                <i class="fab fa-instagram"></i>
-              </a>
-            </p>
-          </div>
-          <!-- Grid column -->
-  
-          <!-- Grid column -->
-          <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
-            <!-- Links -->
-            <h6 class="text-uppercase fw-bold mb-4">mağaza</h6>
-            <p class="text-black">Eğer satış yapmak istiyorsanız mağazanız için <a href="../magazagiris" style="font-style:italic; font-weight: bold;"> "buraya" </a> tıklayın</p>
-          </div>
-          <!-- Grid column -->
-        </div>
-        <!-- Grid row -->
-      </div>
-    </section>
-    <!-- Section: Links  -->
-  
-  </footer>
-  <!-- Footer -->
+    
+
+    ?>
+
+
+ <?php
+ include('../footerklasor.php');
+ ?>
      
     
 </body>
