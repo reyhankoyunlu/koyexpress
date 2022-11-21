@@ -71,7 +71,19 @@
     </div>
     <!-- Container wrapper -->
   
-   
+   <!-- rightnavbar -->
+   <div class="container-fluid ">
+    <ul class="navbar-nav d-flex flex-row menuler ">
+      <!-- Icons -->
+      <li class="nav-item me-3 me-lg-0">
+        <a class="nav-link" href="#">
+          <i class="fa-regular fa-plus-large"></i>
+          <p style="font-size:18px ; font-weight: bold;">Ürün Ekle</p>
+        </a>
+      </li>
+
+    </ul>
+  </div>
   
   </nav>
 
@@ -138,12 +150,19 @@
 </div>
 </nav>
 
-<div>
-  <img src="../img/ana/anaerkek.jpg" alt="..." style="width:100%; padding: 50px; margin-top: -50px;"  >
+<div class="container mb-5">
+  <div class="row">
+  <div class="p-3 mb-2  text-white" style="background-color:#000d90 ; border-radius: 15px; border:5px solid #000d90; ">
+  <img src="../WhatsApp Görsel 2022-11-21 saat 15.13.32.jpg" style="width: 80px; height: 80px; border: 1px solid white; padding: 3px; " class="rounded-circle " alt="...">
+      <b style="margin-left: 20px;">RICLOTHING</b> 
+  </div>
+  </div>
 </div>
 
+
+
 <!-- main -->
-<div class="container">
+<div class="container" >
   <div class="row">
     <div class="col-md-12">
       <div class="carousel slide multi-item-carousel" id="theCarousel3">

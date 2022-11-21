@@ -1,6 +1,6 @@
 <?php
 session_start();
-
+include("yonetim/register.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -23,7 +23,7 @@ include('header.php');
     <link rel="stylesheet" href="style.css" />
    
     <!-- ICONFINDER -->
-    <link rel="shortcut icon" href="Koyexpress Resmi Logo.ico">
+    <link rel="shortcut icon" href="img/Koyexpress Resmi Logo.ico">
 
     
 <!-- popup -->
@@ -114,8 +114,6 @@ include('header.php');
   
     <!-- rightnavbar -->
 
-    
-    
       <div class="container-fluid " >
         <ul class="navbar-nav d-flex flex-row menuler ">
           <!-- Icons -->
@@ -132,6 +130,7 @@ include('header.php');
               
             </a>
           </li>
+          
           <?php
     if (isset($_SESSION['Kullanici'])) { 
       ?>
@@ -144,7 +143,7 @@ include('header.php');
           </li> 
           <li class="nav-item me-3 me-lg-0" >
             <a class="nav-link" href="yonetim/logout.php" style="color:#000d90 ;" >
-              <i class="fas fa-user"></i>
+            <i class="fa-solid fa-circle-xmark"></i>
               <p style="font-size:13px ;">Çıkış</p>
               
             </a>
@@ -236,7 +235,7 @@ include('header.php');
 </nav>
 <?php
     if (isset($_SESSION['Kullanici'])) { 
-      echo '<div class="alert alert-success" ><p>Hoşgeldin ' ."<b>" .$_SESSION['Kullanici']."</b></p></div>";
+      echo '<div class="alert alert-success" ><p>Hoşgeldin ' ."<b>" .$kullaniciadi ."</b></p></div>";
     
     }
       ?>

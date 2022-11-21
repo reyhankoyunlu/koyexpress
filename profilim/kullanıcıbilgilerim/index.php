@@ -1,3 +1,8 @@
+<?php
+session_start();
+include('../../yonetim/register.php');
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <?php
@@ -190,24 +195,29 @@
 
        <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
         <div class="cizgi " style="height: 550px;">
+
+        <?php
+        if (isset($_SESSION['Kullanici'])) {?>
+        
+
         <h4 class="mt-5 giris">Üyelik Bilgilerim</h4>
 
         <form class="">
           <div class="mt-4 ">
             <label for="ad" class="form-label text-black">Ad </label>
-            <input type="text" class="form-control" id="ad">
+            <input type="text" class="form-control" id="ad" placeholder="<?php echo $kullaniciadi; ?>">
           </div>
           <div class="mt-4 ">
             <label for="soyad" class="form-label text-black">Soyad </label>
-            <input type="text" class="form-control" id="soyad">
+            <input type="text" class="form-control" id="soyad" placeholder="<?php echo $kullanicisoyadi;?>">
           </div>
           <div class="mt-4 ">
-            <label for="tel" class="form-label text-black">Telefon Numarası </label>
-            <input type="tel" class="form-control" id="tel">
+            <label for="mail" class="form-label text-black">Mail </label>
+            <input type="email" class="form-control" id="mail" placeholder="<?php echo $kullanicimail;?>">
           </div>
           <div class="mt-4  ">
             <label for="dogum" class="form-label text-black">Doğum Tarihi </label>
-            <input type="date" class="form-control" id="dogum">
+            <input type="date" class="form-control" id="dogum" >
           </div>
           <div class="mt-4 ">
             <label for="gender" class="form-label text-black">Cinsiyet </label><br>
@@ -253,6 +263,10 @@
       <button type="submit" class="btn butongiris giris w-100">Güncelle </button>                                         
       </div>
     </form>
+
+    <?php  
+  }
+        ?>
 
 </div>
 

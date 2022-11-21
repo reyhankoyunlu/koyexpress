@@ -1,5 +1,6 @@
 <?php
 session_start();
+error_reporting(0);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -153,8 +154,6 @@ include('../header.php');
 
           <?php
 
-
-
           $ad = @$_POST["ad"];
           $soyad = @$_POST["soyad"];
           $mail = @$_POST["mail"];
@@ -173,9 +172,11 @@ include('../header.php');
           } else {
 
 
+            // veritabanı ismi - biz tanımlıyoruz
 
             $save = $baglan->prepare("insert into kullanicibilgileri set 
 
+            
             ad =:ad,
             soyad =:soyad,
             mail =:mail,
