@@ -12,6 +12,9 @@ if (isset($_SESSION['Kullanici'])) {
         $kullaniciadi=$bilgikullanici['ad'];
         $kullanicisoyadi=$bilgikullanici['soyad'];
         $kullanicimail=$bilgikullanici['mail'];
+        $kullaniciid = $bilgikullanici['kullaniciid'];
+        $kullanicisifre=$bilgikullanici['sifre'];
+        
     }
 }
 

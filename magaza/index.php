@@ -153,8 +153,8 @@
 <div class="container mb-5">
   <div class="row">
   <div class="p-3 mb-2  text-white" style="background-color:#000d90 ; border-radius: 15px; border:5px solid #000d90; ">
-  <img src="../WhatsApp Görsel 2022-11-21 saat 15.13.32.jpg" style="width: 80px; height: 80px; border: 1px solid white; padding: 3px; " class="rounded-circle " alt="...">
-      <b style="margin-left: 20px;">RICLOTHING</b> 
+  <img src="../img/rimagaza.jpg" style="width: 80px; height: 80px; border: 1px solid white; padding: 3px; " class="rounded-circle " alt="...">
+      <b style="margin-left: 20px;">KOYEXPRESS</b> 
   </div>
   </div>
 </div>

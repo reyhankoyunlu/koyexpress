@@ -89,7 +89,7 @@
             </a>
           </li>
           <li class="nav-item me-3 me-lg-0" >
-            <a class="nav-link" href="../profilim/kullanıcıbilgilerim/" style="color:#000d90 ;" >
+            <a class="nav-link" href="../profilim/kullanicibilgilerim/" style="color:#000d90 ;" >
               <i class="fas fa-user"></i>
               <p style="font-size:13px ;">Giriş Yap & Kayıt Ol</p>
               

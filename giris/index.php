@@ -84,7 +84,7 @@ include('../header.php');
           </a>
         </li>
         <li class="nav-item me-3 me-lg-0">
-          <a class="nav-link" href="../profilim/kullanıcıbilgilerim/" style="color:#000d90 ;">
+          <a class="nav-link" href="../profilim/kullanicibilgilerim/" style="color:#000d90 ;">
             <i class="fas fa-user"></i>
             <p style="font-size:13px ;">Giriş Yap & Kayıt Ol</p>
 
@@ -105,11 +105,12 @@ include('../header.php');
           <h4 class="mt-md-5  giris ">Giriş Yap</h4>
           <?php
           include("../yonetim/register.php");
+          $gelenmail = $_POST['mail2'];
+          $gelensifre = $_POST['sifre2'];
+          if (isset($_POST["girisyap"])) {
+            
 
-          if ($_POST) {
-            $gelenmail = $_POST['mail2'];
-            $gelensifre = $_POST['sifre2'];
-
+           
 
 
             if ($gelenmail != "" && $gelensifre != "") {
@@ -134,6 +135,7 @@ include('../header.php');
               <label for="mail" class="form-label text-black">Email </label>
               <input type="email" name="mail2" class="form-control" id="mail2">
             </div>
+            <input type="hidden" name="girisyap">
             <div class="mt-4  ">
               <label for="sifre" class="form-label text-black">Şifre</label>
               <input type="password" name="sifre2" class="form-control" id="sifre2">
@@ -161,6 +163,9 @@ include('../header.php');
           $cinsiyet = @$_POST["cinsiyet"];
           $sifre = @$_POST["sifre"];
 
+          if (isset($_POST["kayitol"])) {
+            
+          
 
           $gelenmail = $baglan->prepare("select * from kullanicibilgileri where mail=? LIMIT 1");
           $gelenmail->execute([$mail]);
@@ -168,7 +173,7 @@ include('../header.php');
 
           if ($gelenmailsayisi > 0) {
             echo '<div class="alert alert-danger">mail mevcut</div>';
-            header("Location:../index.php"); //sor
+            header("Location:../index.php");
           } else {
 
 
@@ -201,7 +206,7 @@ include('../header.php');
               echo '<div class="alert alert-success">kayıt başarıyla oluşturuldu. Lütfen yan taraftan giriş yapınız!</div>';
             }
           }
-
+        }
           ?>
 
           <form class="" method="POST" name="">
@@ -209,6 +214,7 @@ include('../header.php');
               <label for="ad" class="form-label text-black">Ad </label>
               <input type="text" class="form-control" id="ad" name="ad">
             </div>
+            <input type="hidden" name="kayitol">
             <div class="mt-4 ">
               <label for="soyad" class="form-label text-black">Soyad </label>
               <input type="text" class="form-control" id="soyad" name="soyad">

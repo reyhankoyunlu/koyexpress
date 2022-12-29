@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <?php
@@ -85,12 +89,19 @@
             </a>
           </li>
           <li class="nav-item me-3 me-lg-0" >
-            <a class="nav-link" href="../kullanıcıbilgilerim/" style="color:#000d90 ;" >
+            <a class="nav-link" href="../kullanicibilgilerim/" style="color:#000d90 ;" >
               <i class="fas fa-user"></i>
               <p style="font-size:13px ;">Profilim</p>
               
             </a>
           </li>
+          <li class="nav-item me-3 me-lg-0" >
+            <a class="nav-link" href="../../yonetim/logout.php" style="color:#000d90 ;" >
+            <i class="fa-solid fa-circle-xmark"></i>
+              <p style="font-size:13px ;">Çıkış</p>
+              
+            </a>
+          </li> 
           
         </ul>
       </div>
@@ -170,7 +181,7 @@
 
     <h3>Hesabım</h3>
     <div class="list-group list-group-flush solliste">
-        <a href="../kullanıcıbilgilerim/" class="list-group-item list-group-item-action "><i class="fa-solid fa-user"></i>Kullanıcı Bilgilerim</a>
+        <a href="../kullanicibilgilerim/" class="list-group-item list-group-item-action "><i class="fa-solid fa-user"></i>Kullanıcı Bilgilerim</a>
 
         <a href="../adresbilgilerim/" class="list-group-item list-group-item-action"><i class="fa-solid fa-location-dot"></i>Adres Bilgilerim</a>
 
@@ -189,70 +200,36 @@
   <h2>Kart Bilgilerim</h2>
 
 
+
+  
+  
+<?php
+        if (isset($_SESSION['Kullanici'])) {?>
+
+
   <div class="col-lg-6 col-md-6 mb-4 mb-md-0">
     <div class="cizgi " style="height: 250px;">
 
     <div class="container"> <div class="row">
     <div class="col-md-4 col-lg-4 col-xl-4 mx-auto mb-4">
     <div class="card border-dark mb-3 " style="max-width: 300px;  font-weight: bold; ">
-  <div class="card-header">İş Bankası</div>
+  <div class="card-header ">İş Bankası
+             <span style="float: right; font-size: 18px; color: #000d90;">
+              <i class="fa-solid fa-xmark"></i>
+            </span></div>
   <div class="card-body text-dark " style="display: block; margin:auto ;">
     <p class="card-text">5374 75** **** 1548</p>
     <p class="card-text">10/2025</p>
   </div>
 </div>
     </div>
+</div>
 
-    <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
-<div class="card border-dark mb-3 " style="max-width: 250px;  font-weight: bold; ">
-  <div class="card-header">İş Bankası</div>
-  <div class="card-body text-dark " style="display: block; margin:auto ;">
-    <p class="card-text">5374 75** **** 1548</p>
-    <p class="card-text">10/2025</p>
-  </div>
-</div>
-    </div>
-
-    <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
-<div class="card border-dark mb-3 " style="max-width: 250px;  font-weight: bold; ">
-  <div class="card-header">İş Bankası</div>
-  <div class="card-body text-dark " style="display: block; margin:auto ;">
-    <p class="card-text">5374 75** **** 1548</p>
-    <p class="card-text">10/2025</p>
-  </div>
-</div>
-    </div>
-
-    <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
-<div class="card border-dark mb-3 " style="max-width: 250px;  font-weight: bold; ">
-  <div class="card-header">İş Bankası</div>
-  <div class="card-body text-dark " style="display: block; margin:auto ;">
-    <p class="card-text">5374 75** **** 1548</p>
-    <p class="card-text">10/2025</p>
-  </div>
-</div>
-    </div>
-
-    <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
-<div class="card border-dark mb-3 " style="max-width: 250px;  font-weight: bold; ">
-  <div class="card-header">İş Bankası</div>
-  <div class="card-body text-dark " style="display: block; margin:auto ;">
-    <p class="card-text">5374 75** **** 1548</p>
-    <p class="card-text">10/2025</p>
-  </div>
-</div>
-    </div>
-
-    <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
-<div class="card border-dark mb-3 " style="max-width: 250px;  font-weight: bold; ">
-  <div class="card-header">İş Bankası</div>
-  <div class="card-body text-dark " style="display: block; margin:auto ;">
-    <p class="card-text">5374 75** **** 1548</p>
-    <p class="card-text">10/2025</p>
-  </div>
-</div>
-    </div>
-</div>
+<?php  
+  }else{
+        ?><h3 style="text-align: center;">LÜTFEN GİRİŞ YAPINIZ</h3><?php 
+  }
+        ?>
 </div>
 
     </div>

@@ -1,5 +1,6 @@
 <?php
 session_start();
+include('../yonetim/register.php');
 ?>
 
 <!DOCTYPE html>
@@ -101,7 +102,7 @@ session_start();
 
     <!-- main -->
               
-  <form class=" " >
+  <form method="POST" >
     <div class="container p-4">
       <div class="row magazakayıt">
         <h4 class="mt-md-5 giris ">Mağaza Kayıt</h4>
@@ -110,54 +111,51 @@ session_start();
     
       <div class="mt-4   ">
         <label for="Ad" class="form-label text-black">Ad </label>
-        <input  type="text" class="form-control" id="Ad" >
+        <input  type="text" class="form-control" id="Ad" name="ad" >
       </div>
       <div class="mt-4  ">
         <label for="Soyad" class="form-label text-black">Soyad</label>
-        <input type="text" class="form-control" id="Soyad">
+        <input type="text" class="form-control" id="Soyad" name="soyad">
       </div>
       <div class="mt-4   ">
         <label for="Tel" class="form-label text-black">Telefon Numarası </label>
-        <input  type="tel" class="form-control" id="Tel" >
+        <input  type="tel" class="form-control" id="Tel" name="telno">
       </div>
       <div class="mt-4  ">
         <label for="Mail" class="form-label text-black">Mail</label>
-        <input type="email" class="form-control" id="Mail">
+        <input type="email" class="form-control" id="Mail" name="mail">
       </div>
     </div>
 
     <div class="col-lg-6 col-md-12 mb-4 mb-md-0"  >
       <div class="mt-4   ">
         <label for="tur" class="form-label text-black ">Şirket Türü </label>
-        <input  type="text" class="form-control" id="tur">
+        <input  type="text" class="form-control" id="tur" name="sirketturu">
       </div>
       <div class="mt-4  ">
         <label for="Tc" class="form-label text-black">Tc No Veya Vergi No</label>
-        <input type="text" class="form-control" id="Tc">
+        <input type="text" class="form-control" id="Tc"name="tcvergi">
       </div>
       <div class="mt-4   ">
         <label for="il" class="form-label text-black">İl </label>
-        <input  type="text" class="form-control" id="il">
+        <input  type="text" class="form-control" id="il"name="il">
       </div>
       <div class="mt-4 ">
         <label for="ilce" class="form-label text-black">İlçe</label>
-        <input type="text" class="form-control" id="ilce">
+        <input type="text" class="form-control" id="ilce"name="ilce">
       </div>
 
-
-      
-
-
     </div>
     
     
     </div>
+    
     <div class="mt-4  magazasecim " >
-      <label for="urun" class="form-label text-black">Ürün Kategorisi</label><br>
-      <input type="checkbox" name="giyim"  >Giyim
-      <input type="checkbox" name="spor" >Spor&Outdoor <br>
-      <input type="checkbox" name="icgiyim" >İç Giyim         
-      <input type="checkbox" name="ayakkabi" >Ayakkabı
+      <label for="kategori" class="form-label text-black">Ürün Kategorisi</label><br>
+      <input type="checkbox" value="giyim" name="kategori"  >Giyim
+      <input type="checkbox" value="spor" name="kategori" >Spor&Outdoor <br>
+      <input type="checkbox" value="icgiyim" name="kategori" >İç Giyim         
+      <input type="checkbox" value="ayakkabi" name="kategori" >Ayakkabı
     </div>
     <div class="mt-4 ">
       <button type="submit" class="btn butongiris giris ">Mağaza Oluştur</button>                                         
@@ -167,11 +165,54 @@ session_start();
 
 
     <?php
-    
-    
+      $ad=@$_POST["ad"];
+      $soyad=@$_POST["soyad"];
+      $telno=@$_POST["telno"];
+      $mail=@$_POST["mail"];
+      $sirketturu=@$_POST["sirketturu"];
+      $tcvergi=@$_POST["tcvergi"];
+      $il=@$_POST["il"];
+      $ilce=@$_POST["ilce"];
+      $kategori=@$_POST["kategori"];
+
+
+      $kayit=$baglan->prepare("insert into magazabilgileri set
+      
+      ad =:ad,
+      soyad =:soyad,
+      telno =:telno,
+      mail =:mail,
+      sirketturu =:sirketturu,
+      tcvergi =:tcvergi,
+      il =:il,
+      ilce =:ilce,
+      kategori =:kategori
+      
+      ");
+
+      $insert = $kayit->execute(array(
+
+        "ad" => $ad,
+        "soyad" => $soyad,
+        "telno" => $telno,
+        "mail" => $mail,
+        "sirketturu" => $sirketturu,
+        "tcvergi" => $tcvergi,
+        "il" => $il,
+        "ilce" => $ilce,
+        "kategori" => $kategori  
+
+      ));
+
+      if ($insert) {
+        $magazabaglanti=$baglan->prepare("SELECT * from magazabilgileri");
+        $magazabaglanti->execute();
+        $kullanici=$magazabaglanti->fetch(PDO::FETCH_ASSOC);
+
+        header('location:../magaza/index.php');
+      }
 
     ?>
-
 
  <?php
  include('../footerklasor.php');

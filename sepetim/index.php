@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <?php
@@ -84,13 +88,37 @@
               
             </a>
           </li>
-          <li class="nav-item me-3 me-lg-0" >
-            <a class="nav-link" href="../profilim/kullanıcıbilgilerim/" style="color:#000d90 ;" >
+          <?php
+    if (isset($_SESSION['Kullanici'])) { 
+      ?>
+      <li class="nav-item me-3 me-lg-0" >
+            <a class="nav-link" href="../profilim/kullanicibilgilerim/" style="color:#000d90 ;" >
               <i class="fas fa-user"></i>
               <p style="font-size:13px ;">Profilim</p>
               
             </a>
-          </li>
+          </li> 
+          <li class="nav-item me-3 me-lg-0" >
+            <a class="nav-link" href="../yonetim/logout.php" style="color:#000d90 ;" >
+            <i class="fa-solid fa-circle-xmark"></i>
+              <p style="font-size:13px ;">Çıkış</p>
+              
+            </a>
+          </li> 
+    <?php    
+  }else {
+    ?>
+          <li class="nav-item me-3 me-lg-0" >
+            <a class="nav-link" href="../giris/" style="color:#000d90 ;" >
+              <i class="fas fa-user"></i>
+              <p style="font-size:13px ;">Giriş Yap & Kayıt Ol</p>
+              
+            </a>
+          </li> 
+      
+   <?php 
+   }
+   ?>
           
         </ul>
       </div>
@@ -160,9 +188,11 @@
     </div>
 </nav>
 
-
+<?php
+        if (isset($_SESSION['Kullanici'])) {?>
 <!-- left main -->
   <div class="row">
+
 
     <!-- left main -->
 
@@ -289,6 +319,11 @@
 
 
     </div>
+    <?php  
+  }else{
+        ?><h3 style="text-align: center;">LÜTFEN GİRİŞ YAPINIZ</h3><?php 
+  }
+        ?>
   </div>
 
 <?php

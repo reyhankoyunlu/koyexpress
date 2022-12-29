@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <?php
@@ -84,12 +88,19 @@
             </a>
           </li>
           <li class="nav-item me-3 me-lg-0" >
-            <a class="nav-link" href="../kullanıcıbilgilerim/" style="color:#000d90 ;" >
+            <a class="nav-link" href="../kullanicibilgilerim/" style="color:#000d90 ;" >
               <i class="fas fa-user"></i>
               <p style="font-size:13px ;">Profilim</p>
               
             </a>
           </li>
+          <li class="nav-item me-3 me-lg-0" >
+            <a class="nav-link" href="../../yonetim/logout.php" style="color:#000d90 ;" >
+            <i class="fa-solid fa-circle-xmark"></i>
+              <p style="font-size:13px ;">Çıkış</p>
+              
+            </a>
+          </li> 
           
         </ul>
       </div>
@@ -169,7 +180,7 @@
 
     <h3>Hesabım</h3>
     <div class="list-group list-group-flush solliste">
-        <a href="../kullanıcıbilgilerim/" class="list-group-item list-group-item-action "><i class="fa-solid fa-user"></i>Kullanıcı Bilgilerim</a>
+        <a href="../kullanicibilgilerim/" class="list-group-item list-group-item-action "><i class="fa-solid fa-user"></i>Kullanıcı Bilgilerim</a>
 
         <a href="../adresbilgilerim/" class="list-group-item list-group-item-action"><i class="fa-solid fa-location-dot"></i>Adres Bilgilerim</a>
 
@@ -187,6 +198,55 @@
 <div class="col-10 hesapsag ">
 
 <h2>Adres Bilgilerim</h2>
+ 
+
+ 
+<?php
+        if (isset($_SESSION['Kullanici'])) {?>
+        <div class="dropdown">
+  <button type="button"  style="float: right; background-color: #000d90; color: white;" class="btn dropdown-toggle"  data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
+<i class="fa-solid fa-plus" ></i>Adres Ekle
+  </button>
+  <form class="dropdown-menu p-4" method="POST" action="../../giriskodlari.php">
+
+  <input type="hidden" name="adresekle">
+  <input type="hidden" name="kullaniciid" value="<?php $kullaniciid?>">
+    <div class="mb-3">
+      <label for="exampleDropdownFormBaslik" class="form-label">Adres Başlığı</label>
+      <input type="text" class="form-control" id="exampleDropdownFormBaslik" name="adresbasligi">
+    </div>
+    <div class="mb-3">
+      <label for="exampleDropdownFormad" class="form-label">Ad</label>
+      <input type="text" class="form-control" id="exampleDropdownFormad" name="adresad">
+    </div>
+    <div class="mb-3">
+      <label for="exampleDropdownFormsoyad" class="form-label">Soyad</label>
+      <input type="text" class="form-control" id="exampleDropdownFormsoyad" name="adressoyad">
+    </div>
+    <div class="mb-3">
+      <label for="exampleDropdownFormil" class="form-label">İl</label>
+      <input type="text" class="form-control" id="exampleDropdownFormil" name="adresil">
+    </div>
+    <div class="mb-3">
+      <label for="exampleDropdownFormilçe" class="form-label">İlçe</label>
+      <input type="text" class="form-control" id="exampleDropdownFormilce" name="adresilce">
+    </div>
+    <div class="mb-3">
+      <label for="exampleDropdownFormMahalle" class="form-label">Mahalle</label>
+      <input type="text" class="form-control" id="exampleDropdownFormMahalle" name="adresmahalle">
+    </div>
+    <div class="mb-3">
+      <label for="exampleDropdownFormTam" class="form-label">Tam Adres</label>
+      <textarea type="text" class="form-control" id="exampleDropdownFormTam" name="adrestam"></textarea>
+    </div>
+    <div class="mb-3">
+      <label for="exampleDropdownFormTel" class="form-label">Telefon Numarası</label>
+      <input type="tel" class="form-control" id="exampleDropdownFormTel" name="adrestel">
+    </div>
+    <button type="submit" class="btn" style="background-color: #000d90; color: white;">Ekle</button>
+  </form>
+</div>
+
 
 <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
   <div class="cizgi " style="height: 300px;">
@@ -201,8 +261,13 @@
 
   </div>
 
-  <button type="button" class="btn btn-light" data-mdb-toggle="modal" data-mdb-target="#staticBackdrop" >sil</button>
-  <button type="button" class="btn btn-light">düzenle</button>  
+  <button type="button" class="btn btn-light" data-mdb-toggle="modal" data-mdb-target="#staticBackdrop" >sil</button> 
+
+  <?php  
+  }else{
+        ?><h3 style="text-align: center;">LÜTFEN GİRİŞ YAPINIZ</h3><?php 
+  }
+        ?>
 </div>
 
       </div>

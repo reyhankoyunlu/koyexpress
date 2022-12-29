@@ -90,12 +90,19 @@ include('../../yonetim/register.php');
             </a>
           </li>
           <li class="nav-item me-3 me-lg-0" >
-            <a class="nav-link" href="../kullanıcıbilgilerim/" style="color:#000d90 ;" >
+            <a class="nav-link" href="../kullanicibilgilerim/" style="color:#000d90 ;" >
               <i class="fas fa-user"></i>
               <p style="font-size:13px ;">Profilim</p>
               
             </a>
           </li>
+          <li class="nav-item me-3 me-lg-0" >
+            <a class="nav-link" href="../../yonetim/logout.php" style="color:#000d90 ;" >
+            <i class="fa-solid fa-circle-xmark"></i>
+              <p style="font-size:13px ;">Çıkış</p>
+              
+            </a>
+          </li> 
           
         </ul>
       </div>
@@ -175,7 +182,7 @@ include('../../yonetim/register.php');
 
     <h3>Hesabım</h3>
     <div class="list-group list-group-flush solliste">
-        <a href="../kullanıcıbilgilerim/" class="list-group-item list-group-item-action "><i class="fa-solid fa-user"></i>Kullanıcı Bilgilerim</a>
+        <a href="../kullanicibilgilerim/" class="list-group-item list-group-item-action "><i class="fa-solid fa-user"></i>Kullanıcı Bilgilerim</a>
 
         <a href="../adresbilgilerim/" class="list-group-item list-group-item-action"><i class="fa-solid fa-location-dot"></i>Adres Bilgilerim</a>
 
@@ -202,29 +209,33 @@ include('../../yonetim/register.php');
 
         <h4 class="mt-5 giris">Üyelik Bilgilerim</h4>
 
-        <form class="">
+        <form class="" method="POST" action="../../giriskodlari.php">
           <div class="mt-4 ">
+
+            <input type="hidden" name="detayguncelle">
+            <input type="hidden" name="kullaniciid" value="<?php echo $kullaniciid ?>">
+
             <label for="ad" class="form-label text-black">Ad </label>
-            <input type="text" class="form-control" id="ad" placeholder="<?php echo $kullaniciadi; ?>">
+            <input type="text" class="form-control" id="ad"  name="ad" placeholder="<?php echo $kullaniciadi; ?>">
           </div>
           <div class="mt-4 ">
             <label for="soyad" class="form-label text-black">Soyad </label>
-            <input type="text" class="form-control" id="soyad" placeholder="<?php echo $kullanicisoyadi;?>">
+            <input type="text" class="form-control" id="soyad" name="soyad"  placeholder="<?php echo $kullanicisoyadi;?>">
           </div>
           <div class="mt-4 ">
             <label for="mail" class="form-label text-black">Mail </label>
-            <input type="email" class="form-control" id="mail" placeholder="<?php echo $kullanicimail;?>">
+            <input type="email" class="form-control" id="mail" name="mail"  placeholder="<?php echo $kullanicimail;?>">
           </div>
           <div class="mt-4  ">
             <label for="dogum" class="form-label text-black">Doğum Tarihi </label>
-            <input type="date" class="form-control" id="dogum" >
+            <input type="date" class="form-control" id="dogum"  name="dtarihi" >
           </div>
           <div class="mt-4 ">
             <label for="gender" class="form-label text-black">Cinsiyet </label><br>
             <div class="container cinsiyet">
-              <input type="radio" name="cinsiyet" id="kadin">
+              <input type="radio" name="cinsiyet" id="kadin" value="kadın"> 
               <label for="kadin">Kadın</label>
-              <input type="radio" name="cinsiyet" id="erkek" >
+              <input type="radio" name="cinsiyet" id="erkek" value="erkek">
               <label for="erkek">Erkek</label>
             </div>
             
@@ -244,19 +255,22 @@ include('../../yonetim/register.php');
     <div class="cizgi " style="height:550px ;">
     <h4 class="mt-5 giris">Şifre Güncelleme</h4>
 
-    <form class="">
-      
+    <form class="" action="../../giriskodlari.php" method="POST">
+
+    <input type="hidden" name="sifreguncelle">
+    <input type="hidden" name="eskikontrol" value="<?php echo $kullanicisifre ?>">
+    <input type="hidden" name="kullaniciid" value="<?php echo $kullaniciid ?>">
       <div class="mt-4 ">
         <label for="sifre2" class="form-label text-black">Şu Anki Şifre</label>
-        <input type="password" class="form-control" id="sifre2">
+        <input type="password" class="form-control" id="sifre2" name="eskisifre">
       </div>
       <div class="mt-4 ">
         <label for="sifre2" class="form-label text-black">Yeni Şifre</label>
-        <input type="password" class="form-control" id="sifre2">
+        <input type="password" class="form-control" id="sifre2" name="yenisifre">
       </div>
       <div class="mt-4 ">
         <label for="sifre2" class="form-label text-black">Yeni Şifre(Tekrar)</label>
-        <input type="password" class="form-control" id="sifre2">
+        <input type="password" class="form-control" id="sifre2" name="yenisifretekrar">
       </div>
       
       <div class="mt-4">
@@ -265,6 +279,8 @@ include('../../yonetim/register.php');
     </form>
 
     <?php  
+  }else{
+        ?><h3 style="text-align: center;">LÜTFEN GİRİŞ YAPINIZ</h3><?php 
   }
         ?>
 
