@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
     <?php
+    session_start();
+    include('../yonetim/register.php');
     include('../header.php');
     ?>
     
@@ -28,12 +30,13 @@
 <body>
 
     <!-- Navbar -->
-<nav class="navbar navbar-expand-lg genelnav ">
+   <!-- Navbar -->
+   <nav class="navbar navbar-expand-lg genelnav ">
     <!-- Container wrapper -->
     <div class="container-fluid">
   
       <!-- Navbar brand -->
-      <a class="navbar-brand logo" href="../index.php"><img src="../img/Koyexpress Resmi Logo.png" alt="" style="width: 80px; margin-left: 120px;"></a>
+      <a class="navbar-brand logo" href="index.php"><img src="../img/Koyexpress Resmi Logo.png" alt="" style="width: 80px; margin-left: 120px;"></a>
   
       <!-- Toggle button -->
       <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -70,8 +73,11 @@
       </div>
     </div>
     <!-- Container wrapper -->
+
+    
   
     <!-- rightnavbar -->
+
       <div class="container-fluid " >
         <ul class="navbar-nav d-flex flex-row menuler ">
           <!-- Icons -->
@@ -88,77 +94,51 @@
               
             </a>
           </li>
-          <li class="nav-item me-3 me-lg-0" >
+          
+          <?php
+    if (isset($_SESSION['Kullanici'])) { 
+      ?>
+      <li class="nav-item me-3 me-lg-0" >
             <a class="nav-link" href="../profilim/kullanicibilgilerim/" style="color:#000d90 ;" >
+              <i class="fas fa-user"></i>
+              <p style="font-size:13px ;">Profilim</p>
+              
+            </a>
+          </li> 
+          <li class="nav-item me-3 me-lg-0" >
+            <a class="nav-link" href="../yonetim/logout.php" style="color:#000d90 ;" >
+            <i class="fa-solid fa-circle-xmark"></i>
+              <p style="font-size:13px ;">Çıkış</p>
+              
+            </a>
+          </li> 
+    <?php    
+  }else {
+    ?>
+          <li class="nav-item me-3 me-lg-0" >
+            <a class="nav-link" href="../giris/" style="color:#000d90 ;" >
               <i class="fas fa-user"></i>
               <p style="font-size:13px ;">Giriş Yap & Kayıt Ol</p>
               
             </a>
-          </li>
+          </li> 
+      
+   <?php 
+   }
+   ?>
+    
+           
           
         </ul>
       </div>
   
-  </nav>
+</nav>
 
 <!-- menu navbar -->
- <nav class="navbar navbar-expand-lg  kıyafetdropdown">
-<div class="menu">Giyim
-  
-  <ul class="drop" aria-labelledby="dropdownMenuButton">
-    <li><a class ="dropdown-item" href="#">Tişört</a></li>
-    <li><a class="dropdown-item" href="#">Gömlek</a></li>
-    <li><a class="dropdown-item" href="#">Kot Pantolon</a></li>
-    <li><a class="dropdown-item" href="#">Pantolon</a></li>
-    <li><a class="dropdown-item" href="#">Ceket</a></li>
-    <li><a class="dropdown-item" href="#">Kazak</a></li>
-    <li><a class="dropdown-item" href="#">Şort</a></li>
-    <li><a class="dropdown-item" href="#">Eşofman</a></li>
-    <li><a class="dropdown-item" href="#">Takım Elbise</a></li>
-  </ul>
-</div>
 
-
-<div class="menu">
-  İç Giyim
-  <ul class="drop" aria-labelledby="dropdownMenuButton">
-    <li><a class="dropdown-item" href="#">Pijama Takımı</a></li>
-    <li><a class="dropdown-item" href="#">Boxer</a></li>
-    <li><a class="dropdown-item" href="#">Çorap</a></li>
-    <li><a class="dropdown-item" href="#">Atlet</a></li>
-  </ul>
-</div>
-
-
-<div class="menu">
-    Spor&Outdoor
-  <ul class="drop" aria-labelledby="dropdownMenuButton">
-    <li><a class="dropdown-item" href="#">Sweatshirt</a></li>
-    <li><a class="dropdown-item" href="#">T-Shirt</a></li>
-    <li><a class="dropdown-item" href="#">Spor Çorap</a></li>
-    <li><a class="dropdown-item" href="#">Eşofman</a></li>
-    <li><a class="dropdown-item" href="#">Spor Çantası</a></li>
-    <li><a class="dropdown-item" href="#">Outdoor Bot</a></li>
-    <li><a class="dropdown-item" href="#">Koşu Ayakkabısı</a></li>
-    <li><a class="dropdown-item" href="#">Outdoor Ayakkabı</a></li>
-    <li><a class="dropdown-item" href="#">Forma</a></li>
-  </ul>
-</div>
-
-<div class="menu">
-    Ayakkabı
-  <ul class="drop" aria-labelledby="dropdownMenuButton">
-    <li><a class="dropdown-item" href="#">Spo Ayakkabı</a></li>
-    <li><a class="dropdown-item" href="#">Günlük Ayakkabı</a></li>
-    <li><a class="dropdown-item" href="#">Yürüyüş Ayakkabısı</a></li>
-    <li><a class="dropdown-item" href="#">Sneaker</a></li>
-    <li><a class="dropdown-item" href="#">Klasik</a></li>
-    <li><a class="dropdown-item" href="#">Bot</a></li>
-  </ul>
-</div>
-
-</div>
-</nav>
+<?php
+include('../menunavbarerkek.php');
+?>
 
 <div>
   <img src="../img/ana/anaerkek.jpg" alt="..." style="width:100%; padding: 50px; margin-top: -50px;"  >
@@ -170,205 +150,49 @@
     <div class="col-md-12">
       <div class="carousel slide multi-item-carousel" id="theCarousel3">
         <div class="carousel-inner">
+        <div class="item active"></div>
+        <?php 
+        
+        $urunsorgu= $baglan->prepare('select * from urunbilgileri  where uruncinsiyet = "Erkek"');
+        $urunsorgu->execute();
+        while ($urunyazma=$urunsorgu->fetch(PDO::FETCH_ASSOC)) {
+          
+        
 
-          <div class="item active">
-            <div class="col-xs-4">
-              <div class="card-img ">
-                <img src="../img/sliders/erkekslider1.png" class="card-img-top img-fluid d-block mx-auto" alt="..." style="width: 250px;"  >
-
-                <span class = "heart-icon">
-                  <i class = "far fa-heart"></i> <!--tıklanınca içi dolu olacak ve favorilere eklenecek-->
-                </span>
-
-                <div class = "product-info p-3" >
-                  <a href = "#" class = "d-block text-dark text-decoration-none py-2 product-name">Trendyol Collection Sweater - Gray - Oversize</a>
-                  <span class = "product-price">$ 100.50</span>
-                  <div class = "rating d-flex mt-1">
-                      <span>
-                          <i class = "fa fa-star"></i>
-                      </span>
-                      <span>
-                          <i class = "fa fa-star"></i>
-                      </span>
-                      <span>
-                          <i class = "far fa-star"></i>
-                      </span>
-                      <span>
-                          <i class = "far fa-star"></i>
-                      </span>
-                      <span>
-                          <i class = "far fa-star"></i>
-                      </span>
-                  </div>
-              </div>
-              </div></div>
-          </div>
-
+        ?>
 
           <div class="item ">
             <div class="col-xs-4">
               <div class="card-img ">
-                <img src="../img/sliders/erkekslider2.png" class="card-img-top img-fluid d-block mx-auto" alt="..." style="width: 250px;"  >
+                <img src="../img/cards/<?php echo $urunyazma['urunfoto']?>" class="card-img-top img-fluid d-block mx-auto" alt="..." style="width: 250px;"  >
 
-                <span class = "heart-icon">
+
+                <form action="giriskodlari.php" method="POST">
+
+                  <input type="hidden" name="favoriekleme">
+                  <input type="hidden" name="urunid" value="<?php echo $urunyazma['urunid']; ?>">
+                  <input type="hidden" name="kullaniciid" value="<?php echo $kullaniciid; ?>">
+
+                <button class = "heart-icon" style="background-color: black; border-radius: 50px; opacity: .5; ">
                   <i class = "far fa-heart"></i> <!--tıklanınca içi dolu olacak ve favorilere eklenecek-->
-                </span>
+                </button>
+
+                </form>
 
                 <div class = "product-info p-3" >
-                  <a href = "#" class = "d-block text-dark text-decoration-none py-2 product-name">Trendyol Collection Sweater - Gray - Oversize</a>
-                  <span class = "product-price">$ 100.50</span>
-                  <div class = "rating d-flex mt-1">
-                      <span>
-                          <i class = "fa fa-star"></i>
-                      </span>
-                      <span>
-                          <i class = "fa fa-star"></i>
-                      </span>
-                      <span>
-                          <i class = "far fa-star"></i>
-                      </span>
-                      <span>
-                          <i class = "far fa-star"></i>
-                      </span>
-                      <span>
-                          <i class = "far fa-star"></i>
-                      </span>
-                  </div>
+                  <a href = "urunpaneli/urun.php?urunid=<?php echo $urunyazma['urunid'] ?>" class = "d-block text-dark text-decoration-none py-2 product-name"><?php echo $urunyazma['urunad'];?></a>
+                  <span class = "product-price"><?php echo $urunyazma['fiyat']?> TL </span>
+                  
               </div>
               </div></div>
           </div>
 
-          <div class="item ">
-            <div class="col-xs-4">
-              <div class="card-img ">
-                <img src="../img/sliders/erkekslider3.jpg" class="card-img-top img-fluid d-block mx-auto" alt="..." style="width: 250px;"  >
 
-                <span class = "heart-icon">
-                  <i class = "far fa-heart"></i> <!--tıklanınca içi dolu olacak ve favorilere eklenecek-->
-                </span>
 
-                <div class = "product-info p-3" >
-                  <a href = "#" class = "d-block text-dark text-decoration-none py-2 product-name">Trendyol Collection Sweater - Gray - Oversize</a>
-                  <span class = "product-price">$ 100.50</span>
-                  <div class = "rating d-flex mt-1">
-                      <span>
-                          <i class = "fa fa-star"></i>
-                      </span>
-                      <span>
-                          <i class = "fa fa-star"></i>
-                      </span>
-                      <span>
-                          <i class = "far fa-star"></i>
-                      </span>
-                      <span>
-                          <i class = "far fa-star"></i>
-                      </span>
-                      <span>
-                          <i class = "far fa-star"></i>
-                      </span>
-                  </div>
-              </div>
-              </div></div>
-          </div>
 
-          <div class="item ">
-            <div class="col-xs-4">
-              <div class="card-img ">
-                <img src="../img/sliders/erkekslider4.jpg" class="card-img-top img-fluid d-block mx-auto" alt="..." style="width: 250px;"  >
+          
+          <?php }?>
 
-                <span class = "heart-icon">
-                  <i class = "far fa-heart"></i> <!--tıklanınca içi dolu olacak ve favorilere eklenecek-->
-                </span>
-
-                <div class = "product-info p-3" >
-                  <a href = "#" class = "d-block text-dark text-decoration-none py-2 product-name">Trendyol Collection Sweater - Gray - Oversize</a>
-                  <span class = "product-price">$ 100.50</span>
-                  <div class = "rating d-flex mt-1">
-                      <span>
-                          <i class = "fa fa-star"></i>
-                      </span>
-                      <span>
-                          <i class = "fa fa-star"></i>
-                      </span>
-                      <span>
-                          <i class = "far fa-star"></i>
-                      </span>
-                      <span>
-                          <i class = "far fa-star"></i>
-                      </span>
-                      <span>
-                          <i class = "far fa-star"></i>
-                      </span>
-                  </div>
-              </div>
-              </div></div>
-          </div>
-
-          <div class="item ">
-            <div class="col-xs-4">
-              <div class="card-img ">
-                <img src="../img/sliders/erkekslider5.jpg" class="card-img-top img-fluid d-block mx-auto" alt="..." style="width: 250px;"  >
-
-                <span class = "heart-icon">
-                  <i class = "far fa-heart"></i> <!--tıklanınca içi dolu olacak ve favorilere eklenecek-->
-                </span>
-
-                <div class = "product-info p-3" >
-                  <a href = "#" class = "d-block text-dark text-decoration-none py-2 product-name">Trendyol Collection Sweater - Gray - Oversize</a>
-                  <span class = "product-price">$ 100.50</span>
-                  <div class = "rating d-flex mt-1">
-                      <span>
-                          <i class = "fa fa-star"></i>
-                      </span>
-                      <span>
-                          <i class = "fa fa-star"></i>
-                      </span>
-                      <span>
-                          <i class = "far fa-star"></i>
-                      </span>
-                      <span>
-                          <i class = "far fa-star"></i>
-                      </span>
-                      <span>
-                          <i class = "far fa-star"></i>
-                      </span>
-                  </div>
-              </div>
-              </div></div>
-          </div>
-
-          <div class="item ">
-            <div class="col-xs-4">
-              <div class="card-img ">
-                <img src="../img/sliders/erkekslider6.jpg" class="card-img-top img-fluid d-block mx-auto" alt="..." style="width: 250px;"  >
-
-                <span class = "heart-icon">
-                  <i class = "far fa-heart"></i> <!--tıklanınca içi dolu olacak ve favorilere eklenecek-->
-                </span>
-
-                <div class = "product-info p-3" >
-                  <a href = "#" class = "d-block text-dark text-decoration-none py-2 product-name">Trendyol Collection Sweater - Gray - Oversize</a>
-                  <span class = "product-price">$ 100.50</span>
-                  <div class = "rating d-flex mt-1">
-                      <span>
-                          <i class = "fa fa-star"></i>
-                      </span>
-                      <span>
-                          <i class = "fa fa-star"></i>
-                      </span>
-                      <span>
-                          <i class = "far fa-star"></i>
-                      </span>
-                      <span>
-                          <i class = "far fa-star"></i>
-                      </span>
-                      <span>
-                          <i class = "far fa-star"></i>
-                      </span>
-                  </div>
-              </div>
-              </div></div>
-          </div>
 
           <!-- add  more items here -->
         </div>
@@ -437,201 +261,50 @@
     <div class="col-md-12">
       <div class="carousel slide multi-item-carousel" id="theCarousel4">
         <div class="carousel-inner">
+        <div class="item active"></div>
+        <?php 
+        
+        $urunsorgu= $baglan->prepare('select * from urunbilgileri  where uruncinsiyet = "Erkek"');
+        $urunsorgu->execute();
+        while ($urunyazma=$urunsorgu->fetch(PDO::FETCH_ASSOC)) {
+          
+        
 
-          <div class="item active">
-            <div class="col-xs-4">
-              <div class="card-img ">
-                <img src="../img/sliders/erkekslider7.png" class="card-img-top img-fluid d-block mx-auto" alt="..." style="width: 250px;"  >
-
-                <span class = "heart-icon">
-                  <i class = "far fa-heart"></i> <!--tıklanınca içi dolu olacak ve favorilere eklenecek-->
-                </span>
-
-                <div class = "product-info p-3" >
-                  <a href = "#" class = "d-block text-dark text-decoration-none py-2 product-name">Trendyol Collection Sweater - Gray - Oversize</a>
-                  <span class = "product-price">$ 100.50</span>
-                  <div class = "rating d-flex mt-1">
-                      <span>
-                          <i class = "fa fa-star"></i>
-                      </span>
-                      <span>
-                          <i class = "fa fa-star"></i>
-                      </span>
-                      <span>
-                          <i class = "far fa-star"></i>
-                      </span>
-                      <span>
-                          <i class = "far fa-star"></i>
-                      </span>
-                      <span>
-                          <i class = "far fa-star"></i>
-                      </span>
-                  </div>
-              </div>
-              </div></div>
-          </div>
-
+        ?>
 
           <div class="item ">
             <div class="col-xs-4">
               <div class="card-img ">
-                <img src="../img/sliders/erkekslider8.jpg" class="card-img-top img-fluid d-block mx-auto" alt="..." style="width: 250px;"  >
+                <img src="../img/cards/<?php echo $urunyazma['urunfoto']?>" class="card-img-top img-fluid d-block mx-auto" alt="..." style="width: 250px;"  >
 
-                <span class = "heart-icon">
+
+                <form action="giriskodlari.php" method="POST">
+
+                  <input type="hidden" name="favoriekleme">
+                  <input type="hidden" name="urunid" value="<?php echo $urunyazma['urunid']; ?>">
+                  <input type="hidden" name="kullaniciid" value="<?php echo $kullaniciid; ?>">
+
+                <button class = "heart-icon" style="background-color: black; border-radius: 50px; opacity: .5; ">
                   <i class = "far fa-heart"></i> <!--tıklanınca içi dolu olacak ve favorilere eklenecek-->
-                </span>
+                </button>
+
+                </form>
 
                 <div class = "product-info p-3" >
-                  <a href = "#" class = "d-block text-dark text-decoration-none py-2 product-name">Trendyol Collection Sweater - Gray - Oversize</a>
-                  <span class = "product-price">$ 100.50</span>
-                  <div class = "rating d-flex mt-1">
-                      <span>
-                          <i class = "fa fa-star"></i>
-                      </span>
-                      <span>
-                          <i class = "fa fa-star"></i>
-                      </span>
-                      <span>
-                          <i class = "far fa-star"></i>
-                      </span>
-                      <span>
-                          <i class = "far fa-star"></i>
-                      </span>
-                      <span>
-                          <i class = "far fa-star"></i>
-                      </span>
-                  </div>
+                  <a href = "urunpaneli/urun.php?urunid=<?php echo $urunyazma['urunid'] ?>" class = "d-block text-dark text-decoration-none py-2 product-name"><?php echo $urunyazma['urunad'];?></a>
+                  <span class = "product-price"><?php echo $urunyazma['fiyat']?> TL </span>
+                  
               </div>
               </div></div>
           </div>
-          <div class="item ">
-            <div class="col-xs-4">
-              <div class="card-img ">
-                <img src="../img/sliders/erkekslider9.jpg" class="card-img-top img-fluid d-block mx-auto" alt="..." style="width: 250px;"  >
 
-                <span class = "heart-icon">
-                  <i class = "far fa-heart"></i> <!--tıklanınca içi dolu olacak ve favorilere eklenecek-->
-                </span>
 
-                <div class = "product-info p-3" >
-                  <a href = "#" class = "d-block text-dark text-decoration-none py-2 product-name">Trendyol Collection Sweater - Gray - Oversize</a>
-                  <span class = "product-price">$ 100.50</span>
-                  <div class = "rating d-flex mt-1">
-                      <span>
-                          <i class = "fa fa-star"></i>
-                      </span>
-                      <span>
-                          <i class = "fa fa-star"></i>
-                      </span>
-                      <span>
-                          <i class = "far fa-star"></i>
-                      </span>
-                      <span>
-                          <i class = "far fa-star"></i>
-                      </span>
-                      <span>
-                          <i class = "far fa-star"></i>
-                      </span>
-                  </div>
-              </div>
-              </div></div>
-          </div>
-          <div class="item ">
-            <div class="col-xs-4">
-              <div class="card-img ">
-                <img src="../img/sliders/erkekslider10.jpg" class="card-img-top img-fluid d-block mx-auto" alt="..." style="width: 250px;"  >
 
-                <span class = "heart-icon">
-                  <i class = "far fa-heart"></i> <!--tıklanınca içi dolu olacak ve favorilere eklenecek-->
-                </span>
 
-                <div class = "product-info p-3" >
-                  <a href = "#" class = "d-block text-dark text-decoration-none py-2 product-name">Trendyol Collection Sweater - Gray - Oversize</a>
-                  <span class = "product-price">$ 100.50</span>
-                  <div class = "rating d-flex mt-1">
-                      <span>
-                          <i class = "fa fa-star"></i>
-                      </span>
-                      <span>
-                          <i class = "fa fa-star"></i>
-                      </span>
-                      <span>
-                          <i class = "far fa-star"></i>
-                      </span>
-                      <span>
-                          <i class = "far fa-star"></i>
-                      </span>
-                      <span>
-                          <i class = "far fa-star"></i>
-                      </span>
-                  </div>
-              </div>
-              </div></div>
-          </div>
-          <div class="item ">
-            <div class="col-xs-4">
-              <div class="card-img ">
-                <img src="../img/sliders/erkekslider11.jpg" class="card-img-top img-fluid d-block mx-auto" alt="..." style="width: 250px;"  >
+          
+          <?php }?>
 
-                <span class = "heart-icon">
-                  <i class = "far fa-heart"></i> <!--tıklanınca içi dolu olacak ve favorilere eklenecek-->
-                </span>
 
-                <div class = "product-info p-3" >
-                  <a href = "#" class = "d-block text-dark text-decoration-none py-2 product-name">Trendyol Collection Sweater - Gray - Oversize</a>
-                  <span class = "product-price">$ 100.50</span>
-                  <div class = "rating d-flex mt-1">
-                      <span>
-                          <i class = "fa fa-star"></i>
-                      </span>
-                      <span>
-                          <i class = "fa fa-star"></i>
-                      </span>
-                      <span>
-                          <i class = "far fa-star"></i>
-                      </span>
-                      <span>
-                          <i class = "far fa-star"></i>
-                      </span>
-                      <span>
-                          <i class = "far fa-star"></i>
-                      </span>
-                  </div>
-              </div>
-              </div></div>
-          </div>
-          <div class="item ">
-            <div class="col-xs-4">
-              <div class="card-img ">
-                <img src="../img/sliders/erkekslider12.jpg" class="card-img-top img-fluid d-block mx-auto" alt="..." style="width: 250px;"  >
-
-                <span class = "heart-icon">
-                  <i class = "far fa-heart"></i> <!--tıklanınca içi dolu olacak ve favorilere eklenecek-->
-                </span>
-
-                <div class = "product-info p-3" >
-                  <a href = "#" class = "d-block text-dark text-decoration-none py-2 product-name">Trendyol Collection Sweater - Gray - Oversize</a>
-                  <span class = "product-price">$ 100.50</span>
-                  <div class = "rating d-flex mt-1">
-                      <span>
-                          <i class = "fa fa-star"></i>
-                      </span>
-                      <span>
-                          <i class = "fa fa-star"></i>
-                      </span>
-                      <span>
-                          <i class = "far fa-star"></i>
-                      </span>
-                      <span>
-                          <i class = "far fa-star"></i>
-                      </span>
-                      <span>
-                          <i class = "far fa-star"></i>
-                      </span>
-                  </div>
-              </div>
-              </div></div>
-          </div>
           <!-- add  more items here -->
         </div>
         <a class="left carousel-control" href="#theCarousel4" data-slide="prev"><i class="glyphicon glyphicon-chevron-left"></i></a>
@@ -699,201 +372,51 @@
     <div class="col-md-12">
       <div class="carousel slide multi-item-carousel" id="theCarousel5">
         <div class="carousel-inner">
+        <div class="item active"></div>
+        <?php 
+        
+        $urunsorgu= $baglan->prepare('select * from urunbilgileri  where uruncinsiyet = "Erkek"');
+        $urunsorgu->execute();
+        while ($urunyazma=$urunsorgu->fetch(PDO::FETCH_ASSOC)) {
+          
+        
 
-          <div class="item active">
-            <div class="col-xs-4">
-              <div class="card-img ">
-                <img src="../img/sliders/erkekslider13.jpg" class="card-img-top img-fluid d-block mx-auto" alt="..." style="width: 250px;"  >
-
-                <span class = "heart-icon">
-                  <i class = "far fa-heart"></i> <!--tıklanınca içi dolu olacak ve favorilere eklenecek-->
-                </span>
-
-                <div class = "product-info p-3" >
-                  <a href = "#" class = "d-block text-dark text-decoration-none py-2 product-name">Trendyol Collection Sweater - Gray - Oversize</a>
-                  <span class = "product-price">$ 100.50</span>
-                  <div class = "rating d-flex mt-1">
-                      <span>
-                          <i class = "fa fa-star"></i>
-                      </span>
-                      <span>
-                          <i class = "fa fa-star"></i>
-                      </span>
-                      <span>
-                          <i class = "far fa-star"></i>
-                      </span>
-                      <span>
-                          <i class = "far fa-star"></i>
-                      </span>
-                      <span>
-                          <i class = "far fa-star"></i>
-                      </span>
-                  </div>
-              </div>
-              </div></div>
-          </div>
-
+        ?>
 
           <div class="item ">
             <div class="col-xs-4">
               <div class="card-img ">
-                <img src="../img/sliders/erkekslider14.jpg" class="card-img-top img-fluid d-block mx-auto" alt="..." style="width: 250px;"  >
+                <img src="../img/cards/<?php echo $urunyazma['urunfoto']?>" class="card-img-top img-fluid d-block mx-auto" alt="..." style="width: 250px;"  >
 
-                <span class = "heart-icon">
+
+                <form action="giriskodlari.php" method="POST">
+
+                  <input type="hidden" name="favoriekleme">
+                  <input type="hidden" name="urunid" value="<?php echo $urunyazma['urunid']; ?>">
+                  <input type="hidden" name="kullaniciid" value="<?php echo $kullaniciid; ?>">
+
+                <button class = "heart-icon" style="background-color: black; border-radius: 50px; opacity: .5; ">
                   <i class = "far fa-heart"></i> <!--tıklanınca içi dolu olacak ve favorilere eklenecek-->
-                </span>
+                </button>
+
+                </form>
 
                 <div class = "product-info p-3" >
-                  <a href = "#" class = "d-block text-dark text-decoration-none py-2 product-name">Trendyol Collection Sweater - Gray - Oversize</a>
-                  <span class = "product-price">$ 100.50</span>
-                  <div class = "rating d-flex mt-1">
-                      <span>
-                          <i class = "fa fa-star"></i>
-                      </span>
-                      <span>
-                          <i class = "fa fa-star"></i>
-                      </span>
-                      <span>
-                          <i class = "far fa-star"></i>
-                      </span>
-                      <span>
-                          <i class = "far fa-star"></i>
-                      </span>
-                      <span>
-                          <i class = "far fa-star"></i>
-                      </span>
-                  </div>
+                  <a href = "urunpaneli/urun.php?urunid=<?php echo $urunyazma['urunid'] ?>" class = "d-block text-dark text-decoration-none py-2 product-name"><?php echo $urunyazma['urunad'];?></a>
+                  <span class = "product-price"><?php echo $urunyazma['fiyat']?> TL </span>
+                  
               </div>
               </div></div>
           </div>
-          <div class="item ">
-            <div class="col-xs-4">
-              <div class="card-img ">
-                <img src="../img/sliders/erkekslider15.jpg" class="card-img-top img-fluid d-block mx-auto" alt="..." style="width: 250px;"  >
 
-                <span class = "heart-icon">
-                  <i class = "far fa-heart"></i> <!--tıklanınca içi dolu olacak ve favorilere eklenecek-->
-                </span>
 
-                <div class = "product-info p-3" >
-                  <a href = "#" class = "d-block text-dark text-decoration-none py-2 product-name">Trendyol Collection Sweater - Gray - Oversize</a>
-                  <span class = "product-price">$ 100.50</span>
-                  <div class = "rating d-flex mt-1">
-                      <span>
-                          <i class = "fa fa-star"></i>
-                      </span>
-                      <span>
-                          <i class = "fa fa-star"></i>
-                      </span>
-                      <span>
-                          <i class = "far fa-star"></i>
-                      </span>
-                      <span>
-                          <i class = "far fa-star"></i>
-                      </span>
-                      <span>
-                          <i class = "far fa-star"></i>
-                      </span>
-                  </div>
-              </div>
-              </div></div>
-          </div>
-          <div class="item ">
-            <div class="col-xs-4">
-              <div class="card-img ">
-                <img src="../img/sliders/erkekslider16.jpg" class="card-img-top img-fluid d-block mx-auto" alt="..." style="width: 250px;"  >
 
-                <span class = "heart-icon">
-                  <i class = "far fa-heart"></i> <!--tıklanınca içi dolu olacak ve favorilere eklenecek-->
-                </span>
 
-                <div class = "product-info p-3" >
-                  <a href = "#" class = "d-block text-dark text-decoration-none py-2 product-name">Trendyol Collection Sweater - Gray - Oversize</a>
-                  <span class = "product-price">$ 100.50</span>
-                  <div class = "rating d-flex mt-1">
-                      <span>
-                          <i class = "fa fa-star"></i>
-                      </span>
-                      <span>
-                          <i class = "fa fa-star"></i>
-                      </span>
-                      <span>
-                          <i class = "far fa-star"></i>
-                      </span>
-                      <span>
-                          <i class = "far fa-star"></i>
-                      </span>
-                      <span>
-                          <i class = "far fa-star"></i>
-                      </span>
-                  </div>
-              </div>
-              </div></div>
-          </div>
-          <div class="item ">
-            <div class="col-xs-4">
-              <div class="card-img ">
-                <img src="../img/sliders/erkekslider17.jpg" class="card-img-top img-fluid d-block mx-auto" alt="..." style="width: 250px;"  >
+          
+          <?php }?>
 
-                <span class = "heart-icon">
-                  <i class = "far fa-heart"></i> <!--tıklanınca içi dolu olacak ve favorilere eklenecek-->
-                </span>
 
-                <div class = "product-info p-3" >
-                  <a href = "#" class = "d-block text-dark text-decoration-none py-2 product-name">Trendyol Collection Sweater - Gray - Oversize</a>
-                  <span class = "product-price">$ 100.50</span>
-                  <div class = "rating d-flex mt-1">
-                      <span>
-                          <i class = "fa fa-star"></i>
-                      </span>
-                      <span>
-                          <i class = "fa fa-star"></i>
-                      </span>
-                      <span>
-                          <i class = "far fa-star"></i>
-                      </span>
-                      <span>
-                          <i class = "far fa-star"></i>
-                      </span>
-                      <span>
-                          <i class = "far fa-star"></i>
-                      </span>
-                  </div>
-              </div>
-              </div></div>
-          </div>
-          <div class="item ">
-            <div class="col-xs-4">
-              <div class="card-img ">
-                <img src="../img/sliders/erkekslider18.jpg" class="card-img-top img-fluid d-block mx-auto" alt="..." style="width: 250px;"  >
 
-                <span class = "heart-icon">
-                  <i class = "far fa-heart"></i> <!--tıklanınca içi dolu olacak ve favorilere eklenecek-->
-                </span>
-
-                <div class = "product-info p-3" >
-                  <a href = "#" class = "d-block text-dark text-decoration-none py-2 product-name">Trendyol Collection Sweater - Gray - Oversize</a>
-                  <span class = "product-price">$ 100.50</span>
-                  <div class = "rating d-flex mt-1">
-                      <span>
-                          <i class = "fa fa-star"></i>
-                      </span>
-                      <span>
-                          <i class = "fa fa-star"></i>
-                      </span>
-                      <span>
-                          <i class = "far fa-star"></i>
-                      </span>
-                      <span>
-                          <i class = "far fa-star"></i>
-                      </span>
-                      <span>
-                          <i class = "far fa-star"></i>
-                      </span>
-                  </div>
-              </div>
-              </div></div>
-          </div>
           <!-- add  more items here -->
         </div>
         <a class="left carousel-control" href="#theCarousel5" data-slide="prev"><i class="glyphicon glyphicon-chevron-left"></i></a>

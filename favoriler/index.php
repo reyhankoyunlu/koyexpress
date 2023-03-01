@@ -1,5 +1,7 @@
 <?php
 session_start();
+include('../yonetim/register.php');
+
 ?>
 
 <!DOCTYPE html>
@@ -137,33 +139,67 @@ include('../header.php');
   <div class="row">
     <div class="col-md-12">
 
+        <?php
+        
+        $favurun=$baglan->prepare("select * from favoribilgileri where musterino='{$kullaniciid}'");
+        $favurun->execute();
+        while ($row=$favurun->fetch(PDO::FETCH_ASSOC)) {
+          
+        $favurunid=$row['urunno'];
+        $urunbilgi=$baglan->prepare("select * from urunbilgileri where urunid='{$favurunid}' ");
+        $urunbilgi->execute();
+
+        if ($urun=$urunbilgi->fetch(PDO::FETCH_ASSOC)) {
+          $urunid=$urun['urunid'];
+          $urunad=$urun['urunad'];
+          $urunfiyat=$urun['fiyat'];
+          $s=$urun['s'];
+          $m=$urun['m'];
+          $l=$urun['l'];
+          $xl=$urun['xl'];
+          $urunfoto=$urun['urunfoto'];
+        }
+        
+        ?>
+
       <div class="item  ">
         <div class="col-xs-4 ">
           <div class="product-img">
-            <img src="../img/sliders/erkekslider1.png" class="card-img-top img-fluid d-block mx-auto" alt="..." style="width: 250px;" >
-
+            <img src="../img/cards/<?php echo $urunfoto ?>" class="card-img-top img-fluid d-block mx-auto" alt="..." style="width: 250px;" >
+            <a href="favsil.php?favoriid=<?php echo $row['favoriid']?>">
             <span class = "heart-icon">
               <i class="fa-solid fa-xmark"></i>
             </span>
+            </a>
 
             <div class = "row btns w- mx-auto text-center">
 
               <div class=" dropdown">
+
+              
+              <form action="../giriskodlari.php" method="POST">
+
+              <input type="hidden" name="urunid" value="<?php echo $urunid ?>">
+              <input type="hidden" name="kullaniciid" value="<?php echo $kullaniciid ?>">
+              <input type="hidden" name="sepetekle">
+
               <div class="btn-group">
-                <button class="btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  add to card
+                <button class="btn" type="submit"aria-expanded="false">
+                  Sepete Ekle
                 </button>
                 
               </div>
-              
+              </form>
               <div class="btn-group ">
                 <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  size
+                  Beden
                 </button>
                 <ul class="dropdown-menu">
                   <li><button class="dropdown-item" type="button">s</button></li>
                   <li><button class="dropdown-item" type="button">m</button></li>
                   <li><button class="dropdown-item" type="button">l</button></li>
+                  <li><button class="dropdown-item" type="button">xl</button></li>
+
                 </ul>
               </div>
           </div>
@@ -171,26 +207,10 @@ include('../header.php');
         </div>
 
             <div class = "product-info p-3" >
-              <a href = "#" class = "d-block text-dark text-decoration-none py-2 product-name">Trendyol Collection Sweater - Gray - Oversize</a>
-              <span class = "product-price indirimsiz">$ 100.50</span>
-              <span class = "product-price ">$ 100.50</span>
-              <div class = "rating d-flex mt-1">
-                  <span>
-                      <i class = "fa fa-star"></i>
-                  </span>
-                  <span>
-                      <i class = "fa fa-star"></i>
-                  </span>
-                  <span>
-                      <i class = "far fa-star"></i>
-                  </span>
-                  <span>
-                      <i class = "far fa-star"></i>
-                  </span>
-                  <span>
-                      <i class = "far fa-star"></i>
-                  </span>
-              </div>
+              <a href = "../urunpaneli/urun.php?urunid=<?php echo $row['urunno'] ?>" class = "d-block text-dark text-decoration-none py-2 product-name"><?php echo $urunad; ?></a>
+              <span class = "product-price indirimsiz"></span>
+              <span class = "product-price "><?php echo $urunfiyat ; ?> TL</span>
+              
               
           </div>
           </div>
@@ -198,522 +218,7 @@ include('../header.php');
         </div>
           
       </div>
-
-      <div class="item ">
-        <div class="col-xs-4">
-          <div class="card-img ">
-            <img src="../img/sliders/slider11.jpg" class="card-img-top img-fluid d-block mx-auto" alt="..." style="width: 250px;" >
-
-            <span class = "heart-icon">
-              <i class="fa-solid fa-xmark"></i>
-            </span>
-
-            <div class = "row btns w- mx-auto text-center">
-
-              <div class=" dropdown">
-              <div class="btn-group">
-                <button class="btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  add to card
-                </button>
-                
-              </div>
-              
-              <div class="btn-group ">
-                <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  size
-                </button>
-                <ul class="dropdown-menu">
-                  <li><button class="dropdown-item" type="button">s</button></li>
-                  <li><button class="dropdown-item" type="button">m</button></li>
-                  <li><button class="dropdown-item" type="button">l</button></li>
-                </ul>
-              </div>
-          </div>
-          
-        </div>
-
-            <div class = "product-info p-3" >
-              <a href = "#" class = "d-block text-dark text-decoration-none py-2 product-name">Trendyol Collection Sweater - Gray - Oversize</a>
-              <span class = "product-price">$ 100.50</span>
-              <div class = "rating d-flex mt-1">
-                  <span>
-                      <i class = "fa fa-star"></i>
-                  </span>
-                  <span>
-                      <i class = "fa fa-star"></i>
-                  </span>
-                  <span>
-                      <i class = "far fa-star"></i>
-                  </span>
-                  <span>
-                      <i class = "far fa-star"></i>
-                  </span>
-                  <span>
-                      <i class = "far fa-star"></i>
-                  </span>
-              </div>
-          </div>
-          </div></div>
-      </div>
-
-      <div class="item ">
-        <div class="col-xs-4">
-          <div class="card-img ">
-            <img src="../img/sliders/slider17.jpg" class="card-img-top img-fluid d-block mx-auto" alt="..." style="width: 250px;" >
-
-            <span class = "heart-icon">
-              <i class="fa-solid fa-xmark"></i>
-            </span>
-
-            <div class = "row btns w- mx-auto text-center">
-
-              <div class=" dropdown">
-              <div class="btn-group">
-                <button class="btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  add to card
-                </button>
-                
-              </div>
-              
-              <div class="btn-group ">
-                <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  size
-                </button>
-                <ul class="dropdown-menu">
-                  <li><button class="dropdown-item" type="button">s</button></li>
-                  <li><button class="dropdown-item" type="button">m</button></li>
-                  <li><button class="dropdown-item" type="button">l</button></li>
-                </ul>
-              </div>
-          </div>
-          
-        </div>
-
-            <div class = "product-info p-3" >
-              <a href = "#" class = "d-block text-dark text-decoration-none py-2 product-name">Trendyol Collection Sweater - Gray - Oversize</a>
-              <span class = "product-price">$ 100.50</span>
-              <div class = "rating d-flex mt-1">
-                  <span>
-                      <i class = "fa fa-star"></i>
-                  </span>
-                  <span>
-                      <i class = "fa fa-star"></i>
-                  </span>
-                  <span>
-                      <i class = "far fa-star"></i>
-                  </span>
-                  <span>
-                      <i class = "far fa-star"></i>
-                  </span>
-                  <span>
-                      <i class = "far fa-star"></i>
-                  </span>
-              </div>
-          </div>
-          </div></div>
-      </div>
-
-      <div class="item ">
-        <div class="col-xs-4">
-          <div class="card-img ">
-            <img src="../img/sliders/erkekslider13.jpg" class="card-img-top img-fluid d-block mx-auto" alt="..." style="width: 250px;" >
-
-            <span class = "heart-icon">
-              <i class="fa-solid fa-xmark"></i>
-            </span>
-
-            <div class = "row btns w- mx-auto text-center">
-
-              <div class=" dropdown">
-              <div class="btn-group">
-                <button class="btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  add to card
-                </button>
-                
-              </div>
-              
-              <div class="btn-group ">
-                <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  size
-                </button>
-                <ul class="dropdown-menu">
-                  <li><button class="dropdown-item" type="button">s</button></li>
-                  <li><button class="dropdown-item" type="button">m</button></li>
-                  <li><button class="dropdown-item" type="button">l</button></li>
-                </ul>
-              </div>
-          </div>
-          
-        </div>
-
-            <div class = "product-info p-3" >
-              <a href = "#" class = "d-block text-dark text-decoration-none py-2 product-name">Trendyol Collection Sweater - Gray - Oversize</a>
-              <span class = "product-price indirimsiz">$ 100.50</span>
-              <span class = "product-price">$ 100.50</span>
-              <div class = "rating d-flex mt-1">
-                  <span>
-                      <i class = "fa fa-star"></i>
-                  </span>
-                  <span>
-                      <i class = "fa fa-star"></i>
-                  </span>
-                  <span>
-                      <i class = "far fa-star"></i>
-                  </span>
-                  <span>
-                      <i class = "far fa-star"></i>
-                  </span>
-                  <span>
-                      <i class = "far fa-star"></i>
-                  </span>
-              </div>
-          </div>
-          </div></div>
-      </div>
-
-      <div class="item ">
-        <div class="col-xs-4">
-          <div class="card-img ">
-            <img src="../img/sliders/slider18.jpg" class="card-img-top img-fluid d-block mx-auto" alt="..." style="width: 250px;" >
-
-            <span class = "heart-icon">
-              <i class="fa-solid fa-xmark"></i>
-            </span>
-
-            <div class = "row btns w- mx-auto text-center">
-
-              <div class=" dropdown">
-              <div class="btn-group">
-                <button class="btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  add to card
-                </button>
-                
-              </div>
-              
-              <div class="btn-group ">
-                <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  size
-                </button>
-                <ul class="dropdown-menu">
-                  <li><button class="dropdown-item" type="button">s</button></li>
-                  <li><button class="dropdown-item" type="button">m</button></li>
-                  <li><button class="dropdown-item" type="button">l</button></li>
-                </ul>
-              </div>
-          </div>
-          
-        </div>
-
-            <div class = "product-info p-3" >
-              <a href = "#" class = "d-block text-dark text-decoration-none py-2 product-name">Trendyol Collection Sweater - Gray - Oversize</a>
-              <span class = "product-price">$ 100.50</span>
-              <div class = "rating d-flex mt-1">
-                  <span>
-                      <i class = "fa fa-star"></i>
-                  </span>
-                  <span>
-                      <i class = "fa fa-star"></i>
-                  </span>
-                  <span>
-                      <i class = "far fa-star"></i>
-                  </span>
-                  <span>
-                      <i class = "far fa-star"></i>
-                  </span>
-                  <span>
-                      <i class = "far fa-star"></i>
-                  </span>
-              </div>
-          </div>
-          </div></div>
-      </div>
-
-      <div class="item ">
-        <div class="col-xs-4">
-          <div class="card-img ">
-            <img src="../img/sliders/erkekslider8.jpg" class="card-img-top img-fluid d-block mx-auto" alt="..." style="width: 250px;" >
-
-            <span class = "heart-icon">
-              <i class="fa-solid fa-xmark"></i>
-            </span>
-
-            <div class = "row btns w- mx-auto text-center">
-
-              <div class=" dropdown">
-              <div class="btn-group">
-                <button class="btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  add to card
-                </button>
-                
-              </div>
-              
-              <div class="btn-group ">
-                <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  size
-                </button>
-                <ul class="dropdown-menu">
-                  <li><button class="dropdown-item" type="button">s</button></li>
-                  <li><button class="dropdown-item" type="button">m</button></li>
-                  <li><button class="dropdown-item" type="button">l</button></li>
-                </ul>
-              </div>
-          </div>
-          
-        </div>
-
-            <div class = "product-info p-3" >
-              <a href = "#" class = "d-block text-dark text-decoration-none py-2 product-name">Trendyol Collection Sweater - Gray - Oversize</a>
-              <span class = "product-price indirimsiz">$ 100.50</span>
-              <span class = "product-price">$ 100.50</span>
-              <div class = "rating d-flex mt-1">
-                  <span>
-                      <i class = "fa fa-star"></i>
-                  </span>
-                  <span>
-                      <i class = "fa fa-star"></i>
-                  </span>
-                  <span>
-                      <i class = "far fa-star"></i>
-                  </span>
-                  <span>
-                      <i class = "far fa-star"></i>
-                  </span>
-                  <span>
-                      <i class = "far fa-star"></i>
-                  </span>
-              </div>
-          </div>
-          </div></div>
-      </div>
-
-      <div class="item ">
-        <div class="col-xs-4">
-          <div class="card-img ">
-            <img src="../img/sliders/erkekslider2.png" class="card-img-top img-fluid d-block mx-auto" alt="..." style="width: 250px;" >
-
-            <span class = "heart-icon">
-              <i class="fa-solid fa-xmark"></i>
-            </span>
-
-            <div class = "row btns w- mx-auto text-center">
-
-              <div class=" dropdown">
-              <div class="btn-group">
-                <button class="btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  add to card
-                </button>
-                
-              </div>
-              
-              <div class="btn-group ">
-                <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  size
-                </button>
-                <ul class="dropdown-menu">
-                  <li><button class="dropdown-item" type="button">s</button></li>
-                  <li><button class="dropdown-item" type="button">m</button></li>
-                  <li><button class="dropdown-item" type="button">l</button></li>
-                </ul>
-              </div>
-          </div>
-          
-        </div>
-
-            <div class = "product-info p-3" >
-              <a href = "#" class = "d-block text-dark text-decoration-none py-2 product-name">Trendyol Collection Sweater - Gray - Oversize</a>
-              
-              <span class = "product-price">$ 100.50</span>
-              <div class = "rating d-flex mt-1">
-                  <span>
-                      <i class = "fa fa-star"></i>
-                  </span>
-                  <span>
-                      <i class = "fa fa-star"></i>
-                  </span>
-                  <span>
-                      <i class = "far fa-star"></i>
-                  </span>
-                  <span>
-                      <i class = "far fa-star"></i>
-                  </span>
-                  <span>
-                      <i class = "far fa-star"></i>
-                  </span>
-              </div>
-          </div>
-          </div></div>
-      </div>
-
-      <div class="item ">
-        <div class="col-xs-4">
-          <div class="card-img ">
-            <img src="../img/sliders/slider15.jpg" class="card-img-top img-fluid d-block mx-auto" alt="..." style="width: 250px;" >
-
-            <span class = "heart-icon">
-              <i class="fa-solid fa-xmark"></i>
-            </span>
-
-            <div class = "row btns w- mx-auto text-center">
-
-              <div class=" dropdown">
-              <div class="btn-group">
-                <button class="btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  add to card
-                </button>
-                
-              </div>
-              
-              <div class="btn-group ">
-                <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  size
-                </button>
-                <ul class="dropdown-menu">
-                  <li><button class="dropdown-item" type="button">s</button></li>
-                  <li><button class="dropdown-item" type="button">m</button></li>
-                  <li><button class="dropdown-item" type="button">l</button></li>
-                </ul>
-              </div>
-          </div>
-          
-        </div>
-
-            <div class = "product-info p-3" >
-              <a href = "#" class = "d-block text-dark text-decoration-none py-2 product-name">Trendyol Collection Sweater - Gray - Oversize</a>
-              <span class = "product-price">$ 100.50</span>
-              <div class = "rating d-flex mt-1">
-                  <span>
-                      <i class = "fa fa-star"></i>
-                  </span>
-                  <span>
-                      <i class = "fa fa-star"></i>
-                  </span>
-                  <span>
-                      <i class = "far fa-star"></i>
-                  </span>
-                  <span>
-                      <i class = "far fa-star"></i>
-                  </span>
-                  <span>
-                      <i class = "far fa-star"></i>
-                  </span>
-              </div>
-          </div>
-          </div></div>
-      </div>
-
-      <div class="item ">
-        <div class="col-xs-4">
-          <div class="card-img ">
-            <img src="../img/sliders/slider3.jpg" class="card-img-top img-fluid d-block mx-auto" alt="..." style="width: 250px;" >
-
-            <span class = "heart-icon">
-              <i class="fa-solid fa-xmark"></i>
-            </span>
-
-            <div class = "row btns w- mx-auto text-center">
-
-              <div class=" dropdown">
-              <div class="btn-group">
-                <button class="btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  add to card
-                </button>
-                
-              </div>
-              
-              <div class="btn-group ">
-                <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  size
-                </button>
-                <ul class="dropdown-menu">
-                  <li><button class="dropdown-item" type="button">s</button></li>
-                  <li><button class="dropdown-item" type="button">m</button></li>
-                  <li><button class="dropdown-item" type="button">l</button></li>
-                </ul>
-              </div>
-          </div>
-          
-        </div>
-
-            <div class = "product-info p-3" >
-              <a href = "#" class = "d-block text-dark text-decoration-none py-2 product-name">Trendyol Collection Sweater - Gray - Oversize</a>
-              <span class = "product-price">$ 100.50</span>
-              <div class = "rating d-flex mt-1">
-                  <span>
-                      <i class = "fa fa-star"></i>
-                  </span>
-                  <span>
-                      <i class = "fa fa-star"></i>
-                  </span>
-                  <span>
-                      <i class = "far fa-star"></i>
-                  </span>
-                  <span>
-                      <i class = "far fa-star"></i>
-                  </span>
-                  <span>
-                      <i class = "far fa-star"></i>
-                  </span>
-              </div>
-          </div>
-          </div></div>
-      </div>
-
-      <div class="item ">
-        <div class="col-xs-4">
-          <div class="card-img ">
-            <img src="../img/sliders/slider8.jpg" class="card-img-top img-fluid d-block mx-auto" alt="..." style="width: 250px;" >
-
-            <span class = "heart-icon">
-              <i class="fa-solid fa-xmark"></i>
-            </span>
-
-            <div class = "row btns w- mx-auto text-center">
-
-              <div class=" dropdown">
-              <div class="btn-group">
-                <button class="btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  add to card
-                </button>
-                
-              </div>
-              
-              <div class="btn-group ">
-                <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  size
-                </button>
-                <ul class="dropdown-menu">
-                  <li><button class="dropdown-item" type="button">s</button></li>
-                  <li><button class="dropdown-item" type="button">m</button></li>
-                  <li><button class="dropdown-item" type="button">l</button></li>
-                </ul>
-              </div>
-          </div>
-          
-        </div>
-
-            <div class = "product-info p-3" >
-              <a href = "#" class = "d-block text-dark text-decoration-none py-2 product-name">Trendyol Collection Sweater - Gray - Oversize</a>
-              <span class = "product-price">$ 100.50</span>
-              <div class = "rating d-flex mt-1">
-                  <span>
-                      <i class = "fa fa-star"></i>
-                  </span>
-                  <span>
-                      <i class = "fa fa-star"></i>
-                  </span>
-                  <span>
-                      <i class = "far fa-star"></i>
-                  </span>
-                  <span>
-                      <i class = "far fa-star"></i>
-                  </span>
-                  <span>
-                      <i class = "far fa-star"></i>
-                  </span>
-              </div>
-          </div>
-          </div></div>
-      </div>
+<?php } ?>
 
       
     </div>

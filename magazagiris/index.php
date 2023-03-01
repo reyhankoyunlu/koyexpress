@@ -125,10 +125,19 @@ include('../yonetim/register.php');
         <label for="Mail" class="form-label text-black">Mail</label>
         <input type="email" class="form-control" id="Mail" name="mail">
       </div>
+      <div class="mt-4  ">
+        <label for="sifre" class="form-label text-black">Şifre</label>
+        <input type="password" class="form-control" id="sifre" name="sifre">
+      </div>
     </div>
 
     <div class="col-lg-6 col-md-12 mb-4 mb-md-0"  >
-      <div class="mt-4   ">
+    <div class="mt-4   ">
+        <label for="ad" class="form-label text-black ">Şirket Adı </label>
+        <input  type="text" class="form-control" id="ad" name="sirketadi">
+      </div>
+    
+    <div class="mt-4   ">
         <label for="tur" class="form-label text-black ">Şirket Türü </label>
         <input  type="text" class="form-control" id="tur" name="sirketturu">
       </div>
@@ -162,6 +171,7 @@ include('../yonetim/register.php');
       </div>
     </div>
     </form>
+    <a href="giris.php">Mağzaya sahipseniz tıklayın...</a>
 
 
     <?php
@@ -169,11 +179,14 @@ include('../yonetim/register.php');
       $soyad=@$_POST["soyad"];
       $telno=@$_POST["telno"];
       $mail=@$_POST["mail"];
+      $sifre=@$_POST["sifre"];
+      $sirketad=@$_POST["magazaadi"];
       $sirketturu=@$_POST["sirketturu"];
       $tcvergi=@$_POST["tcvergi"];
       $il=@$_POST["il"];
       $ilce=@$_POST["ilce"];
       $kategori=@$_POST["kategori"];
+
 
 
       $kayit=$baglan->prepare("insert into magazabilgileri set
@@ -182,6 +195,8 @@ include('../yonetim/register.php');
       soyad =:soyad,
       telno =:telno,
       mail =:mail,
+      sifre=:sifre,
+      magazaadi=:sirketad,
       sirketturu =:sirketturu,
       tcvergi =:tcvergi,
       il =:il,
@@ -196,6 +211,8 @@ include('../yonetim/register.php');
         "soyad" => $soyad,
         "telno" => $telno,
         "mail" => $mail,
+        "sifre"=>$sifre,
+        "sirketad"=>$sirketad,
         "sirketturu" => $sirketturu,
         "tcvergi" => $tcvergi,
         "il" => $il,
@@ -205,11 +222,9 @@ include('../yonetim/register.php');
       ));
 
       if ($insert) {
-        $magazabaglanti=$baglan->prepare("SELECT * from magazabilgileri");
-        $magazabaglanti->execute();
-        $kullanici=$magazabaglanti->fetch(PDO::FETCH_ASSOC);
+        
 
-        header('location:../magaza/index.php');
+        echo '<meta http-equiv="refresh" content="1;URL=giris.php">';
       }
 
     ?>

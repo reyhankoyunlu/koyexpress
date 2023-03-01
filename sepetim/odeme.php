@@ -24,7 +24,7 @@ include('../yonetim/register.php');
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-
+<link rel="stylesheet" href="card.css">
     </head>
 <body>
 
@@ -126,17 +126,11 @@ include('../yonetim/register.php');
   
 </nav>
 
- 
+<div class="container">
+    <div class="row">
+        <div class="col-lg-6 col-md-12 mb-4 mb-md-0">,
 
-<?php
-        if (isset($_SESSION['Kullanici'])) {?>
-<!-- left main -->
-  <div class="row">
-
-
-    <!-- left main -->
-
-          <?php 
+        <?php 
           
           $sepetkontrol=$baglan->prepare("select * from sepetbilgileri where kullanicino='{$kullaniciid}'");
 
@@ -151,7 +145,7 @@ include('../yonetim/register.php');
 
           ?>
 
-    <div class="col-8 sepetsol ">
+    <div class=" sepetsol ">
 
       <ul class="list-group ">
         <li class="list-group-item">
@@ -195,14 +189,7 @@ include('../yonetim/register.php');
     </div>
 <?php  } ?> 
 
-
-
-    <!-- right main -->
-    <div class="col-4 sepetsag ">
-
-       
-
-        <div class=" sepetcard  mb-3 mt-3" >
+<div class=" sepetcard  mb-3 mt-3" >
             <div class="card-body ">
               <?php $kargo=19.99;
               $toplam = $tutar+$kargo;
@@ -216,26 +203,108 @@ include('../yonetim/register.php');
             <div class="card-footer bg-transparent text-end"><?php echo $toplam?> TL&emsp;</div>
             
           </div>
-          <br>
-        
-          <a href="odeme.php?kullaniciid=<?php echo $kullaniciid?>" >
-        <button type="button" class="btn btn-lg ">Sepeti Onayla</button> </a>
-        <br>
-        <br><br><br>
 
-
+        </div>
+        <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
+        <div  id="area">
+  <div style="display: block; margin: auto;" class="master-card">
+    <div class="card">
+      <div class="title">Kredi Kartı</div>
+      <div class="input-number"><span class="title-number">Kart Numarası</span>
+        <div class="inputs-number">
+          <input type="text" maxlength="4" name="number-card" placeholder="0000" required="required"/>
+          <input type="text" maxlength="4" name="number-card" placeholder="0000" required="required"/>
+          <input type="text" maxlength="4" name="number-card" placeholder="0000" required="required"/>
+          <input type="text" maxlength="4" name="number-card" placeholder="0000" required="required"/>
+        </div>
+        <div class="selects-date selecters">
+          <div class="day-select"><span>Gün</span>
+            <select id="dates">
+              <option value="">1</option>
+              <option value="">2</option>
+              <option value="">3</option>
+              <option value="">4</option>
+              <option value="">5</option>
+              <option value="">6</option>
+              <option value="">7</option>
+              <option value="">8</option>
+              <option value="">9</option>
+              <option value="">10</option>
+              <option value="">11</option>
+              <option value="">12</option>
+              <option value="">13</option>
+              <option value="">14</option>
+              <option value="">15</option>
+              <option value="">16</option>
+              <option value="">17</option>
+              <option value="">18</option>
+              <option value="">19</option>
+              <option value="">20</option>
+              <option value="">21</option>
+              <option value="">22</option>
+              <option value="">23</option>
+              <option value="">24</option>
+              <option value="">25</option>
+              <option value="">26</option>
+              <option value="">27</option>
+              <option value="">28</option>
+              <option value="">29</option>
+              <option value="">30</option>
+            </select>
+          </div>
+          <div class="year-select"><span>Yıl</span>
+            <select id="dates">
+              <option value="">17</option>
+              <option value="">18</option>
+              <option value="">19</option>
+              <option value="">20</option>
+              <option value="">21</option>
+              <option value="">22</option>
+              <option value="">23</option>
+              <option value="">24</option>
+              <option value="">25</option>
+              <option value="">26</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="mark-gold">
+        <div class="round">
+          <div class="circles">
+            <div class="circle-1"> </div>
+            <div class="circle-2"> </div>
+          </div>
+        </div>
+      </div>
+      <div class="name"><span>JEAN O IMPSUM</span></div>
     </div>
-    <?php  
-  }else{
-        ?><h3 style="text-align: center;">LÜTFEN GİRİŞ YAPINIZ</h3><?php 
-  }
-        ?>
+    <div class="card-back">
+      <div class="tire"></div>
+      <div class="secret-area">
+        <input type="text" maxlength="3" name="number-card" placeholder="000" required="required"/>
+      </div>
+      <div class="chip-card"></div>
+    </div>
   </div>
+  <div style="display: block; margin: auto; margin-top: 15px; margin-left: 230px;" class="button-sent">
+    <button id="back">Geri Çevir</button>
+    <button id="continue">Çevir</button>
+  </div>
+  <div style="display: block; margin: auto; margin-top: 15px; margin-left: 230px;" class="button-sent">
+    
+    <button id="continue">Öde</button>
+  </div>
+</div>
+        </div>
+    </div>
+</div>
+
 
 <?php
 include('../footerklasor.php');
 ?>
   
   <script src="../script.js"></script> 
+  <script src="card.js"></script>
 </body>
-</html>
+</html

@@ -110,67 +110,10 @@ include('../../yonetim/register.php');
   </nav>
 
   <!-- menu navbar -->
- <nav class="navbar navbar-expand-lg  kıyafetdropdown">
-    <div class="menu">Giyim
-      
-      <ul class="drop" aria-labelledby="dropdownMenuButton">
-        <li><a class="dropdown-item" href="#">Elbise</a></li>
-        <li><a class ="dropdown-item" href="#">Tişört</a></li>
-        <li><a class="dropdown-item" href="#">Gömlek</a></li>
-        <li><a class="dropdown-item" href="#">Kot Pantolon</a></li>
-        <li><a class="dropdown-item" href="#">Kot Ceket</a></li>
-        <li><a class="dropdown-item" href="#">Pantolon</a></li>
-        <li><a class="dropdown-item" href="#">Mont</a></li>
-        <li><a class="dropdown-item" href="#">Bluz</a></li>
-        <li><a class="dropdown-item" href="#">Ceket</a></li>
-        <li><a class="dropdown-item" href="#">Etek</a></li>
-        <li><a class="dropdown-item" href="#">Kazak</a></li>
-      </ul>
-    </div>
-    
-    
-    <div class="menu">
-      İç Giyim
-      <ul class="drop" aria-labelledby="dropdownMenuButton">
-        <li><a class="dropdown-item" href="#">Pijama Takımı</a></li>
-        <li><a class="dropdown-item" href="#">Takımlar</a></li>
-        <li><a class="dropdown-item" href="#">Gecelik</a></li>
-        <li><a class="dropdown-item" href="#">Sütyen</a></li>
-        <li><a class="dropdown-item" href="#">Çorap</a></li>
-      </ul>
-    </div>
-    
-    
-    <div class="menu">
-        Spor&Outdoor
-      <ul class="drop" aria-labelledby="dropdownMenuButton">
-        <li><a class="dropdown-item" href="#">Sweatshirt</a></li>
-        <li><a class="dropdown-item" href="#">Tişört</a></li>
-        <li><a class="dropdown-item" href="#">Tayt</a></li>
-        <li><a class="dropdown-item" href="#">Eşofman</a></li>
-        <li><a class="dropdown-item" href="#">Spor Sütyeni</a></li>
-        <li><a class="dropdown-item" href="#">Spor Çantası</a></li>
-        <li><a class="dropdown-item" href="#">Spor Ayakkabısı</a></li>
-        <li><a class="dropdown-item" href="#">Koşu Ayakkabısı</a></li>
-        <li><a class="dropdown-item" href="#">Outdoor Ayakkabı</a></li>
-        <li><a class="dropdown-item" href="#">Kar Botu</a></li>
-      </ul>
-    </div>
-    
-    <div class="menu">
-        Ayakkabı
-      <ul class="drop" aria-labelledby="dropdownMenuButton">
-        <li><a class="dropdown-item" href="#">Topuklu Ayakkabı</a></li>
-        <li><a class="dropdown-item" href="#">Günlük Ayakkabı</a></li>
-        <li><a class="dropdown-item" href="#">Sneaker</a></li>
-        <li><a class="dropdown-item" href="#">Babet</a></li>
-        <li><a class="dropdown-item" href="#">Sandalet</a></li>
-        <li><a class="dropdown-item" href="#">Bot</a></li>
-      </ul>
-    </div>
-    
-    </div>
-    </nav>
+ 
+  <?php
+  include('../../menunavbarkadin.php');
+  ?>
 
 <!-- left main -->
 <div class="container">
@@ -186,10 +129,6 @@ include('../../yonetim/register.php');
 
         <a href="../adresbilgilerim/" class="list-group-item list-group-item-action"><i class="fa-solid fa-location-dot"></i>Adres Bilgilerim</a>
 
-        <a href="../kartbilgilerim/" class="list-group-item list-group-item-action"><i class="fa-regular fa-credit-card"></i>Kart Bilgilerim</a>
-
-        <a href="../indirimkuponlarım/" class="list-group-item list-group-item-action"><i class="fa-solid fa-tag"></i>İndirim Kuponlarım</a>
-        
       </div>
     </div>
 

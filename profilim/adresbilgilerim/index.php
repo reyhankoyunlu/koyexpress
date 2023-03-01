@@ -1,5 +1,6 @@
 <?php
 session_start();
+include('../../yonetim/register.php');
 ?>
 
 <!DOCTYPE html>
@@ -108,67 +109,9 @@ session_start();
 </nav>
 
   <!-- menu navbar -->
-<nav class="navbar navbar-expand-lg  kıyafetdropdown">
-    <div class="menu">Giyim
-      
-      <ul class="drop" aria-labelledby="dropdownMenuButton">
-        <li><a class="dropdown-item" href="#">Elbise</a></li>
-        <li><a class ="dropdown-item" href="#">Tişört</a></li>
-        <li><a class="dropdown-item" href="#">Gömlek</a></li>
-        <li><a class="dropdown-item" href="#">Kot Pantolon</a></li>
-        <li><a class="dropdown-item" href="#">Kot Ceket</a></li>
-        <li><a class="dropdown-item" href="#">Pantolon</a></li>
-        <li><a class="dropdown-item" href="#">Mont</a></li>
-        <li><a class="dropdown-item" href="#">Bluz</a></li>
-        <li><a class="dropdown-item" href="#">Ceket</a></li>
-        <li><a class="dropdown-item" href="#">Etek</a></li>
-        <li><a class="dropdown-item" href="#">Kazak</a></li>
-      </ul>
-    </div>
-    
-    
-    <div class="menu">
-      İç Giyim
-      <ul class="drop" aria-labelledby="dropdownMenuButton">
-        <li><a class="dropdown-item" href="#">Pijama Takımı</a></li>
-        <li><a class="dropdown-item" href="#">Takımlar</a></li>
-        <li><a class="dropdown-item" href="#">Gecelik</a></li>
-        <li><a class="dropdown-item" href="#">Sütyen</a></li>
-        <li><a class="dropdown-item" href="#">Çorap</a></li>
-      </ul>
-    </div>
-    
-    
-    <div class="menu">
-        Spor&Outdoor
-      <ul class="drop" aria-labelledby="dropdownMenuButton">
-        <li><a class="dropdown-item" href="#">Sweatshirt</a></li>
-        <li><a class="dropdown-item" href="#">Tişört</a></li>
-        <li><a class="dropdown-item" href="#">Tayt</a></li>
-        <li><a class="dropdown-item" href="#">Eşofman</a></li>
-        <li><a class="dropdown-item" href="#">Spor Sütyeni</a></li>
-        <li><a class="dropdown-item" href="#">Spor Çantası</a></li>
-        <li><a class="dropdown-item" href="#">Spor Ayakkabısı</a></li>
-        <li><a class="dropdown-item" href="#">Koşu Ayakkabısı</a></li>
-        <li><a class="dropdown-item" href="#">Outdoor Ayakkabı</a></li>
-        <li><a class="dropdown-item" href="#">Kar Botu</a></li>
-      </ul>
-    </div>
-    
-    <div class="menu">
-        Ayakkabı
-      <ul class="drop" aria-labelledby="dropdownMenuButton">
-        <li><a class="dropdown-item" href="#">Topuklu Ayakkabı</a></li>
-        <li><a class="dropdown-item" href="#">Günlük Ayakkabı</a></li>
-        <li><a class="dropdown-item" href="#">Sneaker</a></li>
-        <li><a class="dropdown-item" href="#">Babet</a></li>
-        <li><a class="dropdown-item" href="#">Sandalet</a></li>
-        <li><a class="dropdown-item" href="#">Bot</a></li>
-      </ul>
-    </div>
-    
-    </div>
-</nav>
+  <?php
+  include('../../menunavbarkadin.php');
+  ?>
 
 <!-- left main -->
 <div class="container">
@@ -184,10 +127,6 @@ session_start();
 
         <a href="../adresbilgilerim/" class="list-group-item list-group-item-action"><i class="fa-solid fa-location-dot"></i>Adres Bilgilerim</a>
 
-        <a href="../kartbilgilerim/" class="list-group-item list-group-item-action"><i class="fa-regular fa-credit-card"></i>Kart Bilgilerim</a>
-
-        <a href="../indirimkuponlarım/" class="list-group-item list-group-item-action"><i class="fa-solid fa-tag"></i>İndirim Kuponlarım</a>
-        
       </div>
 </div>
 
@@ -210,7 +149,7 @@ session_start();
   <form class="dropdown-menu p-4" method="POST" action="../../giriskodlari.php">
 
   <input type="hidden" name="adresekle">
-  <input type="hidden" name="kullaniciid" value="<?php $kullaniciid?>">
+  <input type="hidden" name="kullaniciid" value="<?php echo $kullaniciid?>">
     <div class="mb-3">
       <label for="exampleDropdownFormBaslik" class="form-label">Adres Başlığı</label>
       <input type="text" class="form-control" id="exampleDropdownFormBaslik" name="adresbasligi">
@@ -252,18 +191,26 @@ session_start();
   <div class="cizgi " style="height: 300px;">
     <div class="container">
       <div class="row">
+          <?php $adreslistele = $baglan->prepare("SELECT * from adresbilgileri where kullaniciid = ?");
+          $adreslistele->execute([$kullaniciid]);
 
+
+          while ($row = $adreslistele->fetch(PDO::FETCH_ASSOC)) {
+            # code...
+          
+          ?>
       <div class="card border-dark mb-3" style="max-width: 18rem;">
-  <div class="card-header">Ev</div>
+  <div class="card-header"><?php echo $row['adresbasligi']?></div>
   <div class="card-body text-dark">
-    <h5 class="card-title">ışıklı mahallesi</h5>
-    <p class="card-text">ışıklı mahallesi 2635 sokak  no:22 <br> <br> 531 ***** 15</p>
+    <h5 class="card-title"><?php echo $row['mahalle']?></h5>
+    <p class="card-text"><?php echo $row['tamadres']?><br> <br> <?php echo $row['tel']?></p>
+  </div>
+  
+  <a href="adresil.php?adresid=<?php echo $row['adresid']?>" type="button" class="btn btn-light"  >sil</a> 
+
 
   </div>
-
-  <button type="button" class="btn btn-light" data-mdb-toggle="modal" data-mdb-target="#staticBackdrop" >sil</button> 
-
-  <?php  
+  <?php  }
   }else{
         ?><h3 style="text-align: center;">LÜTFEN GİRİŞ YAPINIZ</h3><?php 
   }
